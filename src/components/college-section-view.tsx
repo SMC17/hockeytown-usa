@@ -12,6 +12,9 @@ export function CollegeSectionView({ team, section }: { team: Team; section: Col
   const articles = g.publicArticlesMentioning(team.id);
 
   if (section === "latest") {
+    const coaches = g.coachesFor(team.id);
+    const arena = team.arenaId ? g.node(team.arenaId) : undefined;
+    const prospects = g.prospectsFor(team.id);
     return (
       <div className="grid cols-2">
         <div className="stack">
@@ -33,15 +36,30 @@ export function CollegeSectionView({ team, section }: { team: Team; section: Col
         </div>
         <div className="stack">
           <div className="card">
-            <h3>Why this hub exists</h3>
+            <h3>Program hub</h3>
             <p className="muted">
-              NCAA programs are first-class Team nodes. Commits, transfers, and NHL rights hang on the same graph as the
-              Islanders mini-OS.
+              {team.division ?? "NCAA"} · {team.city}. Same Team type as NHL clubs. Commits, transfers, and NHL rights hang
+              here — not on a spreadsheet tab.
             </p>
+            {arena ? (
+              <p>
+                Arena: <Link href={`/arenas/${arena.slug}`}>{arena.name}</Link>
+              </p>
+            ) : null}
+            {coaches.map((c) => (
+              <EntityChip key={c.id} node={c} />
+            ))}
           </div>
           <div className="card">
-            <h3>Roster snapshot</h3>
-            <p className="muted">{roster.length} players seeded · {commits.length} commitments</p>
+            <h3>Mini-OS snapshot</h3>
+            <p className="muted">
+              Roster {roster.length} · Commits {commits.length} · Prospect objects {prospects.length}
+            </p>
+            <div className="row">
+              <Link className="chip" href={`/college/${team.slug}/roster`}>Roster</Link>
+              <Link className="chip" href={`/college/${team.slug}/commits`}>Commits</Link>
+              <Link className="chip" href={`/college/${team.slug}/pipeline`}>Pipeline</Link>
+            </div>
           </div>
         </div>
       </div>

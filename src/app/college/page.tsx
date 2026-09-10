@@ -18,9 +18,9 @@ export default function CollegePage() {
       <div className="kicker">College · flagship stub</div>
       <h1>The pipeline is part of the OS.</h1>
       <p className="lede">
-        Five program hubs — Michigan, Minnesota, Denver, Boston University, Quinnipiac — share a mini-OS with Latest,
-        Roster, Commits, and Pipeline. Hometown Michigan clubs stay on the same graph. Penn State is catalog because
-        McKenna&apos;s commitment needs a seat, not a second flagship.
+        Seven program hubs — Michigan, Minnesota, Boston University, Boston College, North Dakota, Quinnipiac, Wisconsin —
+        share a mini-OS with Latest, Roster, Commits, and Pipeline. Denver stays deep. Hometown Michigan clubs stay on the
+        same graph. Penn State is catalog because McKenna&apos;s commitment needs a seat, not an eighth flagship.
       </p>
       <h2 style={{ marginTop: 28 }}>Program hubs</h2>
       <div className="grid cols-3">

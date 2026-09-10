@@ -11,8 +11,8 @@ Phase 1 **NHL deep hubs** (every mini-OS section seeded, including F1–F4, D1�
 
 All 32 NHL clubs have a team mini-OS. Catalog clubs share the layout with empty states.
 
-College flagship hubs (`/college/[slug]`): Michigan Wolverines, Minnesota Golden Gophers, Denver Pioneers, Boston University Terriers, Quinnipiac Bobcats.
+College flagship hubs (`/college/[slug]`): Michigan, Minnesota, Boston University, Boston College, North Dakota, Quinnipiac, Wisconsin. Denver remains a deep program shell.
 
-Hometown (Hockeytown USA texture, not Phase-1 NHL depth): Detroit Red Wings, Michigan / Michigan State / Western Michigan NCAA.
+Hometown (Hockeytown USA texture, not Phase-1 NHL depth): Detroit Red Wings, Michigan / Michigan State / Western Michigan NCAA. Geography stub: `/map` and `/geography/detroit` — place objects, not a broadcast.
 
 Seeded numbers (standings, 2025-26 records, selected counting stats) are a public-table snapshot for foundation work, not a live feed. Replace in Phase 2 ingest.

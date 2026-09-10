@@ -13,8 +13,8 @@ export default function PwhlPage() {
       <div className="kicker">PWHL · first class</div>
       <h1>Women&apos;s pro is not a sidecar.</h1>
       <p className="lede">
-        Eight 2025-26 clubs, including Seattle Torrent and Vancouver Goldeneyes. Same Team type as the NHL. Club hubs
-        live at <code>/pwhl/[slug]</code>.
+        Eight 2025-26 clubs, including Seattle Torrent and Vancouver Goldeneyes. Same Team type as the NHL — first-class
+        in the nav, not a blog tag. Club hubs live at <code>/pwhl/[slug]</code>. No live game video on this stub.
       </p>
       <div className="grid cols-4" style={{ marginTop: 24 }}>
         {teams.map((t) => (

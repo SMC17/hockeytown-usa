@@ -26,7 +26,9 @@ import {
   FOCUS_LINE_UNITS,
   FOCUS_TEAM_SLUGS,
   TEAM_SECTIONS,
+  TOOL_ALIAS_SLUGS,
   TOOL_SLUGS,
+  type ToolSlug,
 } from "./types";
 
 let cached: GraphIndex | null = null;
@@ -335,7 +337,17 @@ export function isTeamSection(value: string): value is TeamSection {
 }
 
 export function isToolSlug(value: string): boolean {
-  return (TOOL_SLUGS as readonly string[]).includes(value);
+  return (
+    (TOOL_SLUGS as readonly string[]).includes(value) ||
+    (TOOL_ALIAS_SLUGS as readonly string[]).includes(value)
+  );
 }
 
-export { COLLEGE_HUB_SLUGS, FOCUS_LINE_UNITS, FOCUS_TEAM_SLUGS, TEAM_SECTIONS, TOOL_SLUGS };
+export function canonicalToolSlug(value: string): ToolSlug | undefined {
+  if (value === "transactions-terminal") return "transactions";
+  if (value === "line-intelligence") return "lines";
+  if ((TOOL_SLUGS as readonly string[]).includes(value)) return value as ToolSlug;
+  return undefined;
+}
+
+export { COLLEGE_HUB_SLUGS, FOCUS_LINE_UNITS, FOCUS_TEAM_SLUGS, TEAM_SECTIONS, TOOL_ALIAS_SLUGS, TOOL_SLUGS };

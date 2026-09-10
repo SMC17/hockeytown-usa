@@ -20,9 +20,9 @@ No pirated highlights. `Video.rights` is `official` | `licensed` | `none`. `none
 
 Deep NHL hubs: Islanders, Maple Leafs, Penguins, Bruins, Panthers, Lightning. Each has every mini-OS section seeded (Latest through Transactions), including PP1/PK1.
 
-College flagship hubs: Michigan, Minnesota, Denver, Boston University, Quinnipiac.
+College flagship hubs: Michigan, Minnesota, Boston University, Boston College, North Dakota, Quinnipiac, Wisconsin.
 
-Hometown texture (not Phase-1 NHL depth): Detroit Red Wings; Michigan / Michigan State / Western Michigan.
+Hometown texture (not Phase-1 NHL depth): Detroit Red Wings; Michigan / Michigan State / Western Michigan. Hockey Map stub: `/map`, `/geography/detroit`.
 
 Details: [FOCUS_TEAMS.md](./FOCUS_TEAMS.md).
 

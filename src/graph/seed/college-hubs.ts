@@ -1,16 +1,33 @@
 import { nodeId } from "../ids";
-import { coach, edge, player, playedFor, roster } from "./builders";
+import { arena, coach, commitment, edge, player, playedFor, roster } from "./builders";
 import type { GraphEdge, GraphNode } from "../types";
 
 const NCAA_SEASON = nodeId("season", "ncaa-2025-26");
 
-function shell(
-  slug: string,
-  firstName: string,
-  lastName: string,
-  position: "C" | "LW" | "RW" | "D" | "G" | "F",
-  school: string,
-) {
+type Program = {
+  slug: string;
+  short: string;
+  school: string;
+  arenaSlug: string;
+  arenaName: string;
+  arenaCity: string;
+  arenaRegion: string;
+  capacity?: number;
+  opened?: number;
+};
+
+const PROGRAMS: Program[] = [
+  { slug: "michigan-wolverines", short: "michigan", school: "Michigan", arenaSlug: "yost-ice-arena", arenaName: "Yost Ice Arena", arenaCity: "Ann Arbor", arenaRegion: "MI", capacity: 5800, opened: 1923 },
+  { slug: "minnesota-golden-gophers", short: "minnesota", school: "Minnesota", arenaSlug: "3m-arena", arenaName: "3M Arena at Mariucci", arenaCity: "Minneapolis", arenaRegion: "MN", capacity: 10200, opened: 1993 },
+  { slug: "boston-university-terriers", short: "bu", school: "Boston University", arenaSlug: "agganis-arena", arenaName: "Agganis Arena", arenaCity: "Boston", arenaRegion: "MA", capacity: 7200, opened: 2005 },
+  { slug: "boston-college-eagles", short: "bc", school: "Boston College", arenaSlug: "conte-forum", arenaName: "Conte Forum", arenaCity: "Chestnut Hill", arenaRegion: "MA", capacity: 8606, opened: 1988 },
+  { slug: "north-dakota-fighting-hawks", short: "und", school: "North Dakota", arenaSlug: "ralph-engelstad-arena", arenaName: "Ralph Engelstad Arena", arenaCity: "Grand Forks", arenaRegion: "ND", capacity: 11640, opened: 2001 },
+  { slug: "quinnipiac-bobcats", short: "quinnipiac", school: "Quinnipiac", arenaSlug: "mt-bank-arena", arenaName: "M&T Bank Arena", arenaCity: "Hamden", arenaRegion: "CT", capacity: 3500, opened: 2007 },
+  { slug: "wisconsin-badgers", short: "wisconsin", school: "Wisconsin", arenaSlug: "la-bahn-arena", arenaName: "LaBahn Arena", arenaCity: "Madison", arenaRegion: "WI", capacity: 2288, opened: 2012 },
+  { slug: "denver-pioneers", short: "denver", school: "Denver", arenaSlug: "magness-arena", arenaName: "Magness Arena", arenaCity: "Denver", arenaRegion: "CO", capacity: 6076, opened: 1999 },
+];
+
+function shell(slug: string, firstName: string, lastName: string, position: "C" | "LW" | "RW" | "D" | "G", school: string) {
   return player({
     slug,
     firstName,
@@ -20,73 +37,84 @@ function shell(
   });
 }
 
-const michigan = nodeId("team", "michigan-wolverines");
-const minnesota = nodeId("team", "minnesota-golden-gophers");
-const denver = nodeId("team", "denver-pioneers");
-const bu = nodeId("team", "boston-university-terriers");
-const qu = nodeId("team", "quinnipiac-bobcats");
+function seatsFor(program: Program) {
+  const s = program.short;
+  const school = program.school;
+  return [
+    shell(`${s}-center-shell`, school, "Center", "C", school),
+    shell(`${s}-wing-shell`, school, "Wing", "LW", school),
+    shell(`${s}-right-wing-shell`, school, "Right Wing", "RW", school),
+    shell(`${s}-defense-shell`, school, "Defense", "D", school),
+    shell(`${s}-goalie-shell`, school, "Goalie", "G", school),
+  ];
+}
 
-const michPlayers = [
-  shell("michigan-center-shell", "Michigan", "Center", "C", "Michigan"),
-  shell("michigan-defense-shell", "Michigan", "Defense", "D", "Michigan"),
-  shell("michigan-goalie-shell", "Michigan", "Goalie", "G", "Michigan"),
-];
-const minnPlayers = [
-  shell("minnesota-center-shell", "Minnesota", "Center", "C", "Minnesota"),
-  shell("minnesota-defense-shell", "Minnesota", "Defense", "D", "Minnesota"),
-  shell("minnesota-goalie-shell", "Minnesota", "Goalie", "G", "Minnesota"),
-];
-const denPlayers = [
-  shell("denver-center-shell", "Denver", "Center", "C", "Denver"),
-  shell("denver-defense-shell", "Denver", "Defense", "D", "Denver"),
-  shell("denver-goalie-shell", "Denver", "Goalie", "G", "Denver"),
-];
-const buPlayers = [
-  shell("bu-center-shell", "BU", "Center", "C", "Boston University"),
-  shell("bu-defense-shell", "BU", "Defense", "D", "Boston University"),
-  shell("bu-goalie-shell", "BU", "Goalie", "G", "Boston University"),
-];
-const quPlayers = [
-  shell("quinnipiac-center-shell", "Quinnipiac", "Center", "C", "Quinnipiac"),
-  shell("quinnipiac-defense-shell", "Quinnipiac", "Defense", "D", "Quinnipiac"),
-  shell("quinnipiac-goalie-shell", "Quinnipiac", "Goalie", "G", "Quinnipiac"),
-];
-
-const coaches = [
-  coach({ name: "Michigan bench (shell)", slug: "michigan-bench-shell", role: "head", teamId: michigan, seasonId: NCAA_SEASON, summary: "Program-hub coach shell." }),
-  coach({ name: "Minnesota bench (shell)", slug: "minnesota-bench-shell", role: "head", teamId: minnesota, seasonId: NCAA_SEASON, summary: "Program-hub coach shell." }),
-  coach({ name: "Denver bench (shell)", slug: "denver-bench-shell", role: "head", teamId: denver, seasonId: NCAA_SEASON, summary: "Program-hub coach shell." }),
-  coach({ name: "BU bench (shell)", slug: "bu-bench-shell", role: "head", teamId: bu, seasonId: NCAA_SEASON, summary: "Program-hub coach shell." }),
-  coach({ name: "Quinnipiac bench (shell)", slug: "quinnipiac-bench-shell", role: "head", teamId: qu, seasonId: NCAA_SEASON, summary: "Program-hub coach shell." }),
-];
-
-const rosters = [
-  roster({ slug: "mich-2025-26", name: "Michigan 2025-26 roster", teamId: michigan, seasonId: NCAA_SEASON, kind: "ncaa" }),
-  roster({ slug: "minn-ncaa-2025-26", name: "Minnesota 2025-26 roster", teamId: minnesota, seasonId: NCAA_SEASON, kind: "ncaa" }),
-  roster({ slug: "den-2025-26", name: "Denver 2025-26 roster", teamId: denver, seasonId: NCAA_SEASON, kind: "ncaa" }),
-  roster({ slug: "bu-2025-26", name: "BU 2025-26 roster", teamId: bu, seasonId: NCAA_SEASON, kind: "ncaa" }),
-  roster({ slug: "qu-2025-26", name: "Quinnipiac 2025-26 roster", teamId: qu, seasonId: NCAA_SEASON, kind: "ncaa" }),
-];
+const byProgram = PROGRAMS.map((program) => {
+  const teamId = nodeId("team", program.slug);
+  const players = seatsFor(program);
+  const commitPlayer = player({
+    slug: `${program.short}-commit-shell`,
+    firstName: program.school,
+    lastName: "Commit",
+    position: "F",
+    summary: `${program.school} commitment shell (class of 2027). Not a real recruit — ingest replaces this seat.`,
+  });
+  return {
+    program,
+    teamId,
+    players,
+    commitPlayer,
+    commit: commitment({
+      slug: `${program.short}-2027-commit`,
+      name: `${program.school} 2027 commit (shell)`,
+      playerId: commitPlayer.id,
+      schoolTeamId: teamId,
+      classYear: 2027,
+      announcedOn: "2026-04-15",
+    }),
+    coach: coach({
+      name: `${program.school} bench (shell)`,
+      slug: `${program.short}-bench-shell`,
+      role: "head",
+      teamId,
+      seasonId: NCAA_SEASON,
+      summary: `${program.school} program-hub coach shell.`,
+    }),
+    roster: roster({
+      slug: `${program.short}-ncaa-2025-26`,
+      name: `${program.school} 2025-26 roster`,
+      teamId,
+      seasonId: NCAA_SEASON,
+      kind: "ncaa",
+    }),
+    arena: arena({
+      slug: program.arenaSlug,
+      name: program.arenaName,
+      city: program.arenaCity,
+      region: program.arenaRegion,
+      country: "US",
+      capacity: program.capacity,
+      opened: program.opened,
+    }),
+  };
+});
 
 export function collegeHubNodes(): GraphNode[] {
-  return [...michPlayers, ...minnPlayers, ...denPlayers, ...buPlayers, ...quPlayers, ...coaches, ...rosters];
+  return byProgram.flatMap((row) => [
+    ...row.players,
+    row.commitPlayer,
+    row.commit,
+    row.coach,
+    row.roster,
+    row.arena,
+  ]);
 }
 
 export function collegeHubEdges(): GraphEdge[] {
-  const seats: [ReturnType<typeof player>[], string][] = [
-    [michPlayers, michigan],
-    [minnPlayers, minnesota],
-    [denPlayers, denver],
-    [buPlayers, bu],
-    [quPlayers, qu],
-  ];
-  const played = seats.flatMap(([group, teamId]) => group.map((pl) => playedFor(pl.id, teamId, { seasonId: NCAA_SEASON, extraKey: NCAA_SEASON })));
-  const coached = [
-    edge("coached_by", michigan, coaches[0].id, { extraKey: NCAA_SEASON }),
-    edge("coached_by", minnesota, coaches[1].id, { extraKey: NCAA_SEASON }),
-    edge("coached_by", denver, coaches[2].id, { extraKey: NCAA_SEASON }),
-    edge("coached_by", bu, coaches[3].id, { extraKey: NCAA_SEASON }),
-    edge("coached_by", qu, coaches[4].id, { extraKey: NCAA_SEASON }),
-  ];
-  return [...played, ...coached];
+  return byProgram.flatMap((row) => [
+    ...row.players.map((pl) => playedFor(pl.id, row.teamId, { seasonId: NCAA_SEASON, extraKey: NCAA_SEASON })),
+    playedFor(row.commitPlayer.id, row.teamId, { seasonId: NCAA_SEASON, extraKey: `${NCAA_SEASON}-commit` }),
+    edge("committed_to", row.commitPlayer.id, row.teamId, { extraKey: "2027" }),
+    edge("coached_by", row.teamId, row.coach.id, { extraKey: NCAA_SEASON }),
+  ]);
 }

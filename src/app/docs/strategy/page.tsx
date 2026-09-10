@@ -44,9 +44,11 @@ export default function StrategyPage() {
         <p>
           College hubs: <Link href="/college/michigan-wolverines">Michigan</Link>,{" "}
           <Link href="/college/minnesota-golden-gophers">Minnesota</Link>,{" "}
-          <Link href="/college/denver-pioneers">Denver</Link>,{" "}
           <Link href="/college/boston-university-terriers">BU</Link>,{" "}
-          <Link href="/college/quinnipiac-bobcats">Quinnipiac</Link>.
+          <Link href="/college/boston-college-eagles">BC</Link>,{" "}
+          <Link href="/college/north-dakota-fighting-hawks">North Dakota</Link>,{" "}
+          <Link href="/college/quinnipiac-bobcats">Quinnipiac</Link>,{" "}
+          <Link href="/college/wisconsin-badgers">Wisconsin</Link>.
         </p>
         <p className="muted">Detroit is hometown catalog, not a coverage hole.</p>
       </div>

@@ -271,11 +271,28 @@ tr:hover td { background: rgba(185, 231, 255, 0.04); }
 .muted { color: var(--muted); }
 .gold { color: var(--gold); }
 .stack { display: flex; flex-direction: column; gap: 10px; }
+.row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
 .row.completeness { gap: 6px; margin-top: 8px; }
+
+button.chip {
+  font: inherit;
+  cursor: pointer;
+}
+
+.map-board {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1.4fr 1fr;
+}
+.map-hero {
+  min-height: 220px;
+  background: linear-gradient(140deg, rgba(200, 16, 46, 0.28), var(--elev));
+}
 
 .conference { margin-bottom: 28px; }
 
 @media (max-width: 800px) {
   .mode-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .masthead { align-items: flex-start; flex-direction: column; }
+  .map-board { grid-template-columns: 1fr; }
 }

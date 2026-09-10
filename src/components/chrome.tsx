@@ -7,7 +7,7 @@ const MODES: { id: FlagshipMode; href: string; label: string; hint: string }[] =
   { id: "understand", href: "/understand", label: "Understand", hint: "Context" },
   { id: "analyze", href: "/analyze", label: "Analyze", hint: "Numbers" },
   { id: "discover", href: "/discover", label: "Discover", hint: "Search the graph" },
-  { id: "follow", href: "/follow", label: "Follow", hint: "Identity" },
+  { id: "follow", href: "/my-hockey", label: "Follow", hint: "My Hockey" },
   { id: "use", href: "/use", label: "Use", hint: "CMS + API" },
 ];
 
@@ -31,6 +31,7 @@ export function SiteChrome({
           <Link href="/nhl">NHL</Link>
           <Link href="/college">College</Link>
           <Link href="/pwhl">PWHL</Link>
+          <Link href="/map">Map</Link>
           <Link href="/tools">Tools</Link>
           <Link href="/articles">Newsroom</Link>
         </nav>
@@ -50,6 +51,7 @@ export function SiteChrome({
           <Link href="/docs">Docs</Link>
           <Link href="/docs/strategy">Strategy</Link>
           <Link href="/docs/held">HELD</Link>
+          <Link href="/my-hockey">My Hockey</Link>
           <Link href="/api/graph">Graph API</Link>
         </div>
       </footer>

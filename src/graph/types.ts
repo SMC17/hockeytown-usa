@@ -429,9 +429,11 @@ export type FocusTeamSlug = (typeof FOCUS_TEAM_SLUGS)[number];
 export const COLLEGE_HUB_SLUGS = [
   "michigan-wolverines",
   "minnesota-golden-gophers",
-  "denver-pioneers",
   "boston-university-terriers",
+  "boston-college-eagles",
+  "north-dakota-fighting-hawks",
   "quinnipiac-bobcats",
+  "wisconsin-badgers",
 ] as const;
 
 export type CollegeHubSlug = (typeof COLLEGE_HUB_SLUGS)[number];
@@ -439,8 +441,11 @@ export type CollegeHubSlug = (typeof COLLEGE_HUB_SLUGS)[number];
 export const COLLEGE_SECTIONS = ["latest", "roster", "commits", "pipeline"] as const;
 export type CollegeSection = (typeof COLLEGE_SECTIONS)[number];
 
-export const TOOL_SLUGS = ["transactions-terminal", "line-intelligence", "org-depth"] as const;
+export const TOOL_SLUGS = ["transactions", "lines", "org-depth"] as const;
 export type ToolSlug = (typeof TOOL_SLUGS)[number];
+
+/** Older URLs still resolve to the canonical tools. */
+export const TOOL_ALIAS_SLUGS = ["transactions-terminal", "line-intelligence"] as const;
 
 export const SEO_TEAM_SECTIONS = ["lines", "injuries", "roster", "prospects"] as const;
 

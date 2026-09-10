@@ -121,19 +121,22 @@ describe("Hockey Graph foundation", () => {
     assert.ok(graph.edgesFrom(eiserman.id, "committed_to").some((e) => e.to === "team:boston-university-terriers"));
   });
 
-  it("seeds five NCAA program hubs", () => {
-    assert.equal(graph.collegeHubs().length, 5);
+  it("seeds seven NCAA program hubs", () => {
+    assert.equal(graph.collegeHubs().length, 7);
     for (const slug of [
       "michigan-wolverines",
       "minnesota-golden-gophers",
-      "denver-pioneers",
       "boston-university-terriers",
+      "boston-college-eagles",
+      "north-dakota-fighting-hawks",
       "quinnipiac-bobcats",
+      "wisconsin-badgers",
     ]) {
       const team = graph.teamBySlug(slug);
       assert.ok(team);
       assert.equal(team.coverage, "deep");
-      assert.ok(graph.rosterFor(team.id).length >= 3, `${slug} roster`);
+      assert.ok(graph.rosterFor(team.id).length >= 5, `${slug} roster`);
+      assert.ok(graph.commitmentsFor(team.id).length >= 1, `${slug} commits`);
     }
   });
 });
