@@ -1,0 +1,1438 @@
+{
+  "export": "hockey-graph-seed",
+  "version": 1,
+  "generatedAt": "2026-09-10T22:00:00.000Z",
+  "entityCount": 70,
+  "entities": [
+    {
+      "id": "league:nhl",
+      "type": "league",
+      "slug": "nhl",
+      "name": "National Hockey League",
+      "props": {
+        "abbreviation": "NHL",
+        "level": "pro",
+        "country": "US/CA"
+      }
+    },
+    {
+      "id": "league:ahl",
+      "type": "league",
+      "slug": "ahl",
+      "name": "American Hockey League",
+      "props": {
+        "abbreviation": "AHL",
+        "level": "minor",
+        "country": "US/CA"
+      }
+    },
+    {
+      "id": "league:ncaa",
+      "type": "league",
+      "slug": "ncaa",
+      "name": "NCAA Division I Ice Hockey",
+      "props": {
+        "abbreviation": "NCAA",
+        "level": "college",
+        "country": "US"
+      }
+    },
+    {
+      "id": "team:anaheim-ducks",
+      "type": "team",
+      "slug": "anaheim-ducks",
+      "name": "Anaheim Ducks",
+      "props": {
+        "abbreviation": "ANA",
+        "city": "Anaheim",
+        "leagueId": "league:nhl",
+        "conference": "Western",
+        "division": "Pacific",
+        "primaryColor": "#F47A38",
+        "secondaryColor": "#B9975B",
+        "coverage": "catalog",
+        "focus": false,
+        "hometown": false
+      }
+    },
+    {
+      "id": "team:boston-bruins",
+      "type": "team",
+      "slug": "boston-bruins",
+      "name": "Boston Bruins",
+      "props": {
+        "abbreviation": "BOS",
+        "city": "Boston",
+        "leagueId": "league:nhl",
+        "conference": "Eastern",
+        "division": "Atlantic",
+        "primaryColor": "#FFB81C",
+        "secondaryColor": "#111111",
+        "coverage": "deep",
+        "focus": true,
+        "hometown": false
+      }
+    },
+    {
+      "id": "team:buffalo-sabres",
+      "type": "team",
+      "slug": "buffalo-sabres",
+      "name": "Buffalo Sabres",
+      "props": {
+        "abbreviation": "BUF",
+        "city": "Buffalo",
+        "leagueId": "league:nhl",
+        "conference": "Eastern",
+        "division": "Atlantic",
+        "primaryColor": "#003087",
+        "secondaryColor": "#FFB81C",
+        "coverage": "catalog",
+        "focus": false,
+        "hometown": false
+      }
+    },
+    {
+      "id": "team:calgary-flames",
+      "type": "team",
+      "slug": "calgary-flames",
+      "name": "Calgary Flames",
+      "props": {
+        "abbreviation": "CGY",
+        "city": "Calgary",
+        "leagueId": "league:nhl",
+        "conference": "Western",
+        "division": "Pacific",
+        "primaryColor": "#C8102E",
+        "secondaryColor": "#F1BE48",
+        "coverage": "catalog",
+        "focus": false,
+        "hometown": false
+      }
+    },
+    {
+      "id": "team:carolina-hurricanes",
+      "type": "team",
+      "slug": "carolina-hurricanes",
+      "name": "Carolina Hurricanes",
+      "props": {
+        "abbreviation": "CAR",
+        "city": "Raleigh",
+        "leagueId": "league:nhl",
+        "conference": "Eastern",
+        "division": "Metropolitan",
+        "primaryColor": "#CC0000",
+        "secondaryColor": "#111111",
+        "coverage": "catalog",
+        "focus": false,
+        "hometown": false
+      }
+    },
+    {
+      "id": "team:chicago-blackhawks",
+      "type": "team",
+      "slug": "chicago-blackhawks",
+      "name": "Chicago Blackhawks",
+      "props": {
+        "abbreviation": "CHI",
+        "city": "Chicago",
+        "leagueId": "league:nhl",
+        "conference": "Western",
+        "division": "Central",
+        "primaryColor": "#CF0A2C",
+        "secondaryColor": "#111111",
+        "coverage": "catalog",
+        "focus": false,
+        "hometown": false
+      }
+    },
+    {
+      "id": "team:colorado-avalanche",
+      "type": "team",
+      "slug": "colorado-avalanche",
+      "name": "Colorado Avalanche",
+      "props": {
+        "abbreviation": "COL",
+        "city": "Denver",
+        "leagueId": "league:nhl",
+        "conference": "Western",
+        "division": "Central",
+        "primaryColor": "#6F263D",
+        "secondaryColor": "#236192",
+        "coverage": "catalog",
+        "focus": false,
+        "hometown": false
+      }
+    },
+    {
+      "id": "team:columbus-blue-jackets",
+      "type": "team",
+      "slug": "columbus-blue-jackets",
+      "name": "Columbus Blue Jackets",
+      "props": {
+        "abbreviation": "CBJ",
+        "city": "Columbus",
+        "leagueId": "league:nhl",
+        "conference": "Eastern",
+        "division": "Metropolitan",
+        "primaryColor": "#002654",
+        "secondaryColor": "#CE1126",
+        "coverage": "catalog",
+        "focus": false,
+        "hometown": false
+      }
+    },
+    {
+      "id": "team:dallas-stars",
+      "type": "team",
+      "slug": "dallas-stars",
+      "name": "Dallas Stars",
+      "props": {
+        "abbreviation": "DAL",
+        "city": "Dallas",
+        "leagueId": "league:nhl",
+        "conference": "Western",
+        "division": "Central",
+        "primaryColor": "#006847",
+        "secondaryColor": "#8F8F8C",
+        "coverage": "catalog",
+        "focus": false,
+        "hometown": false
+      }
+    },
+    {
+      "id": "team:detroit-red-wings",
+      "type": "team",
+      "slug": "detroit-red-wings",
+      "name": "Detroit Red Wings",
+      "props": {
+        "abbreviation": "DET",
+        "city": "Detroit",
+        "leagueId": "league:nhl",
+        "conference": "Eastern",
+        "division": "Atlantic",
+        "primaryColor": "#CE1126",
+        "secondaryColor": "#FFFFFF",
+        "coverage": "catalog",
+        "focus": false,
+        "hometown": true
+      }
+    },
+    {
+      "id": "team:edmonton-oilers",
+      "type": "team",
+      "slug": "edmonton-oilers",
+      "name": "Edmonton Oilers",
+      "props": {
+        "abbreviation": "EDM",
+        "city": "Edmonton",
+        "leagueId": "league:nhl",
+        "conference": "Western",
+        "division": "Pacific",
+        "primaryColor": "#041E42",
+        "secondaryColor": "#FF4C00",
+        "coverage": "catalog",
+        "focus": false,
+        "hometown": false
+      }
+    },
+    {
+      "id": "team:florida-panthers",
+      "type": "team",
+      "slug": "florida-panthers",
+      "name": "Florida Panthers",
+      "props": {
+        "abbreviation": "FLA",
+        "city": "Sunrise",
+        "leagueId": "league:nhl",
+        "conference": "Eastern",
+        "division": "Atlantic",
+        "primaryColor": "#041E42",
+        "secondaryColor": "#C8102E",
+        "coverage": "deep",
+        "focus": true,
+        "hometown": false
+      }
+    },
+    {
+      "id": "team:los-angeles-kings",
+      "type": "team",
+      "slug": "los-angeles-kings",
+      "name": "Los Angeles Kings",
+      "props": {
+        "abbreviation": "LAK",
+        "city": "Los Angeles",
+        "leagueId": "league:nhl",
+        "conference": "Western",
+        "division": "Pacific",
+        "primaryColor": "#111111",
+        "secondaryColor": "#A2AAAD",
+        "coverage": "catalog",
+        "focus": false,
+        "hometown": false
+      }
+    },
+    {
+      "id": "team:minnesota-wild",
+      "type": "team",
+      "slug": "minnesota-wild",
+      "name": "Minnesota Wild",
+      "props": {
+        "abbreviation": "MIN",
+        "city": "Saint Paul",
+        "leagueId": "league:nhl",
+        "conference": "Western",
+        "division": "Central",
+        "primaryColor": "#154734",
+        "secondaryColor": "#A6192E",
+        "coverage": "catalog",
+        "focus": false,
+        "hometown": false
+      }
+    },
+    {
+      "id": "team:montreal-canadiens",
+      "type": "team",
+      "slug": "montreal-canadiens",
+      "name": "Montreal Canadiens",
+      "props": {
+        "abbreviation": "MTL",
+        "city": "Montreal",
+        "leagueId": "league:nhl",
+        "conference": "Eastern",
+        "division": "Atlantic",
+        "primaryColor": "#AF1E2D",
+        "secondaryColor": "#192168",
+        "coverage": "catalog",
+        "focus": false,
+        "hometown": false
+      }
+    },
+    {
+      "id": "team:nashville-predators",
+      "type": "team",
+      "slug": "nashville-predators",
+      "name": "Nashville Predators",
+      "props": {
+        "abbreviation": "NSH",
+        "city": "Nashville",
+        "leagueId": "league:nhl",
+        "conference": "Western",
+        "division": "Central",
+        "primaryColor": "#FFB81C",
+        "secondaryColor": "#041E42",
+        "coverage": "catalog",
+        "focus": false,
+        "hometown": false
+      }
+    },
+    {
+      "id": "team:new-jersey-devils",
+      "type": "team",
+      "slug": "new-jersey-devils",
+      "name": "New Jersey Devils",
+      "props": {
+        "abbreviation": "NJD",
+        "city": "Newark",
+        "leagueId": "league:nhl",
+        "conference": "Eastern",
+        "division": "Metropolitan",
+        "primaryColor": "#CE1126",
+        "secondaryColor": "#111111",
+        "coverage": "catalog",
+        "focus": false,
+        "hometown": false
+      }
+    },
+    {
+      "id": "team:new-york-islanders",
+      "type": "team",
+      "slug": "new-york-islanders",
+      "name": "New York Islanders",
+      "props": {
+        "abbreviation": "NYI",
+        "city": "Elmont",
+        "leagueId": "league:nhl",
+        "conference": "Eastern",
+        "division": "Metropolitan",
+        "primaryColor": "#00539B",
+        "secondaryColor": "#F47D30",
+        "coverage": "deep",
+        "focus": true,
+        "hometown": false
+      }
+    },
+    {
+      "id": "team:new-york-rangers",
+      "type": "team",
+      "slug": "new-york-rangers",
+      "name": "New York Rangers",
+      "props": {
+        "abbreviation": "NYR",
+        "city": "New York",
+        "leagueId": "league:nhl",
+        "conference": "Eastern",
+        "division": "Metropolitan",
+        "primaryColor": "#0038A8",
+        "secondaryColor": "#CE1126",
+        "coverage": "catalog",
+        "focus": false,
+        "hometown": false
+      }
+    },
+    {
+      "id": "team:ottawa-senators",
+      "type": "team",
+      "slug": "ottawa-senators",
+      "name": "Ottawa Senators",
+      "props": {
+        "abbreviation": "OTT",
+        "city": "Ottawa",
+        "leagueId": "league:nhl",
+        "conference": "Eastern",
+        "division": "Atlantic",
+        "primaryColor": "#C52032",
+        "secondaryColor": "#B79257",
+        "coverage": "catalog",
+        "focus": false,
+        "hometown": false
+      }
+    },
+    {
+      "id": "team:philadelphia-flyers",
+      "type": "team",
+      "slug": "philadelphia-flyers",
+      "name": "Philadelphia Flyers",
+      "props": {
+        "abbreviation": "PHI",
+        "city": "Philadelphia",
+        "leagueId": "league:nhl",
+        "conference": "Eastern",
+        "division": "Metropolitan",
+        "primaryColor": "#F74902",
+        "secondaryColor": "#111111",
+        "coverage": "catalog",
+        "focus": false,
+        "hometown": false
+      }
+    },
+    {
+      "id": "team:pittsburgh-penguins",
+      "type": "team",
+      "slug": "pittsburgh-penguins",
+      "name": "Pittsburgh Penguins",
+      "props": {
+        "abbreviation": "PIT",
+        "city": "Pittsburgh",
+        "leagueId": "league:nhl",
+        "conference": "Eastern",
+        "division": "Metropolitan",
+        "primaryColor": "#111111",
+        "secondaryColor": "#FCB514",
+        "coverage": "deep",
+        "focus": true,
+        "hometown": false
+      }
+    },
+    {
+      "id": "team:san-jose-sharks",
+      "type": "team",
+      "slug": "san-jose-sharks",
+      "name": "San Jose Sharks",
+      "props": {
+        "abbreviation": "SJS",
+        "city": "San Jose",
+        "leagueId": "league:nhl",
+        "conference": "Western",
+        "division": "Pacific",
+        "primaryColor": "#006D75",
+        "secondaryColor": "#EA7200",
+        "coverage": "catalog",
+        "focus": false,
+        "hometown": false
+      }
+    },
+    {
+      "id": "team:seattle-kraken",
+      "type": "team",
+      "slug": "seattle-kraken",
+      "name": "Seattle Kraken",
+      "props": {
+        "abbreviation": "SEA",
+        "city": "Seattle",
+        "leagueId": "league:nhl",
+        "conference": "Western",
+        "division": "Pacific",
+        "primaryColor": "#001628",
+        "secondaryColor": "#99D9D9",
+        "coverage": "catalog",
+        "focus": false,
+        "hometown": false
+      }
+    },
+    {
+      "id": "team:st-louis-blues",
+      "type": "team",
+      "slug": "st-louis-blues",
+      "name": "St. Louis Blues",
+      "props": {
+        "abbreviation": "STL",
+        "city": "St. Louis",
+        "leagueId": "league:nhl",
+        "conference": "Western",
+        "division": "Central",
+        "primaryColor": "#002F87",
+        "secondaryColor": "#FCB514",
+        "coverage": "catalog",
+        "focus": false,
+        "hometown": false
+      }
+    },
+    {
+      "id": "team:tampa-bay-lightning",
+      "type": "team",
+      "slug": "tampa-bay-lightning",
+      "name": "Tampa Bay Lightning",
+      "props": {
+        "abbreviation": "TBL",
+        "city": "Tampa",
+        "leagueId": "league:nhl",
+        "conference": "Eastern",
+        "division": "Atlantic",
+        "primaryColor": "#002868",
+        "secondaryColor": "#FFFFFF",
+        "coverage": "deep",
+        "focus": true,
+        "hometown": false
+      }
+    },
+    {
+      "id": "team:toronto-maple-leafs",
+      "type": "team",
+      "slug": "toronto-maple-leafs",
+      "name": "Toronto Maple Leafs",
+      "props": {
+        "abbreviation": "TOR",
+        "city": "Toronto",
+        "leagueId": "league:nhl",
+        "conference": "Eastern",
+        "division": "Atlantic",
+        "primaryColor": "#00205B",
+        "secondaryColor": "#FFFFFF",
+        "coverage": "deep",
+        "focus": true,
+        "hometown": false
+      }
+    },
+    {
+      "id": "team:utah-mammoth",
+      "type": "team",
+      "slug": "utah-mammoth",
+      "name": "Utah Mammoth",
+      "props": {
+        "abbreviation": "UTA",
+        "city": "Salt Lake City",
+        "leagueId": "league:nhl",
+        "conference": "Western",
+        "division": "Central",
+        "primaryColor": "#69B3E7",
+        "secondaryColor": "#0B1C2C",
+        "coverage": "catalog",
+        "focus": false,
+        "hometown": false
+      }
+    },
+    {
+      "id": "team:vancouver-canucks",
+      "type": "team",
+      "slug": "vancouver-canucks",
+      "name": "Vancouver Canucks",
+      "props": {
+        "abbreviation": "VAN",
+        "city": "Vancouver",
+        "leagueId": "league:nhl",
+        "conference": "Western",
+        "division": "Pacific",
+        "primaryColor": "#00205B",
+        "secondaryColor": "#00843D",
+        "coverage": "catalog",
+        "focus": false,
+        "hometown": false
+      }
+    },
+    {
+      "id": "team:vegas-golden-knights",
+      "type": "team",
+      "slug": "vegas-golden-knights",
+      "name": "Vegas Golden Knights",
+      "props": {
+        "abbreviation": "VGK",
+        "city": "Las Vegas",
+        "leagueId": "league:nhl",
+        "conference": "Western",
+        "division": "Pacific",
+        "primaryColor": "#B4975A",
+        "secondaryColor": "#333F42",
+        "coverage": "catalog",
+        "focus": false,
+        "hometown": false
+      }
+    },
+    {
+      "id": "team:washington-capitals",
+      "type": "team",
+      "slug": "washington-capitals",
+      "name": "Washington Capitals",
+      "props": {
+        "abbreviation": "WSH",
+        "city": "Washington",
+        "leagueId": "league:nhl",
+        "conference": "Eastern",
+        "division": "Metropolitan",
+        "primaryColor": "#041E42",
+        "secondaryColor": "#C8102E",
+        "coverage": "catalog",
+        "focus": false,
+        "hometown": false
+      }
+    },
+    {
+      "id": "team:winnipeg-jets",
+      "type": "team",
+      "slug": "winnipeg-jets",
+      "name": "Winnipeg Jets",
+      "props": {
+        "abbreviation": "WPG",
+        "city": "Winnipeg",
+        "leagueId": "league:nhl",
+        "conference": "Western",
+        "division": "Central",
+        "primaryColor": "#041E42",
+        "secondaryColor": "#004C97",
+        "coverage": "catalog",
+        "focus": false,
+        "hometown": false
+      }
+    },
+    {
+      "id": "team:hamilton-hammers",
+      "type": "team",
+      "slug": "hamilton-hammers",
+      "name": "Hamilton Hammers",
+      "props": {
+        "abbreviation": "HAM",
+        "city": "Hamilton",
+        "region": "ON",
+        "leagueId": "league:ahl",
+        "primaryColor": "#111111",
+        "secondaryColor": "#eeeeee",
+        "coverage": "catalog",
+        "summary": "New York Islanders AHL affiliate (not Bridgeport). Catalog seat — no invented boxscores."
+      }
+    },
+    {
+      "id": "team:toronto-marlies",
+      "type": "team",
+      "slug": "toronto-marlies",
+      "name": "Toronto Marlies",
+      "props": {
+        "abbreviation": "TOR",
+        "city": "Toronto",
+        "region": "ON",
+        "leagueId": "league:ahl",
+        "primaryColor": "#111111",
+        "secondaryColor": "#eeeeee",
+        "coverage": "catalog",
+        "summary": "Toronto Marlies AHL affiliate of toronto-maple-leafs. Catalog seat — no invented boxscores."
+      }
+    },
+    {
+      "id": "team:wbs-penguins",
+      "type": "team",
+      "slug": "wbs-penguins",
+      "name": "Wilkes-Barre/Scranton Penguins",
+      "props": {
+        "abbreviation": "WBS",
+        "city": "Wilkes-Barre",
+        "region": "PA",
+        "leagueId": "league:ahl",
+        "primaryColor": "#111111",
+        "secondaryColor": "#eeeeee",
+        "coverage": "catalog",
+        "summary": "Wilkes-Barre/Scranton Penguins AHL affiliate of pittsburgh-penguins. Catalog seat — no invented boxscores."
+      }
+    },
+    {
+      "id": "team:providence-bruins",
+      "type": "team",
+      "slug": "providence-bruins",
+      "name": "Providence Bruins",
+      "props": {
+        "abbreviation": "PRO",
+        "city": "Providence",
+        "region": "RI",
+        "leagueId": "league:ahl",
+        "primaryColor": "#111111",
+        "secondaryColor": "#eeeeee",
+        "coverage": "catalog",
+        "summary": "Providence Bruins AHL affiliate of boston-bruins. Catalog seat — no invented boxscores."
+      }
+    },
+    {
+      "id": "team:springfield-thunderbirds",
+      "type": "team",
+      "slug": "springfield-thunderbirds",
+      "name": "Springfield Thunderbirds",
+      "props": {
+        "abbreviation": "SPR",
+        "city": "Springfield",
+        "region": "MA",
+        "leagueId": "league:ahl",
+        "primaryColor": "#111111",
+        "secondaryColor": "#eeeeee",
+        "coverage": "catalog",
+        "summary": "Springfield Thunderbirds AHL affiliate of florida-panthers. Catalog seat — no invented boxscores."
+      }
+    },
+    {
+      "id": "team:syracuse-crunch",
+      "type": "team",
+      "slug": "syracuse-crunch",
+      "name": "Syracuse Crunch",
+      "props": {
+        "abbreviation": "SYR",
+        "city": "Syracuse",
+        "region": "NY",
+        "leagueId": "league:ahl",
+        "primaryColor": "#111111",
+        "secondaryColor": "#eeeeee",
+        "coverage": "catalog",
+        "summary": "Syracuse Crunch AHL affiliate of tampa-bay-lightning. Catalog seat — no invented boxscores."
+      }
+    },
+    {
+      "id": "team:boston-university-terriers",
+      "type": "team",
+      "slug": "boston-university-terriers",
+      "name": "Boston University Terriers",
+      "props": {
+        "abbreviation": "BU",
+        "city": "Boston",
+        "region": "MA",
+        "leagueId": "league:ncaa",
+        "division": "Hockey East",
+        "primaryColor": "#111111",
+        "secondaryColor": "#eeeeee",
+        "coverage": "deep"
+      }
+    },
+    {
+      "id": "team:boston-college-eagles",
+      "type": "team",
+      "slug": "boston-college-eagles",
+      "name": "Boston College Eagles",
+      "props": {
+        "abbreviation": "BC",
+        "city": "Chestnut Hill",
+        "region": "MA",
+        "leagueId": "league:ncaa",
+        "division": "Hockey East",
+        "primaryColor": "#111111",
+        "secondaryColor": "#eeeeee",
+        "coverage": "deep"
+      }
+    },
+    {
+      "id": "team:michigan-wolverines",
+      "type": "team",
+      "slug": "michigan-wolverines",
+      "name": "Michigan Wolverines",
+      "props": {
+        "abbreviation": "MICH",
+        "city": "Ann Arbor",
+        "region": "MI",
+        "leagueId": "league:ncaa",
+        "division": "Big Ten",
+        "primaryColor": "#111111",
+        "secondaryColor": "#eeeeee",
+        "coverage": "deep"
+      }
+    },
+    {
+      "id": "team:minnesota-golden-gophers",
+      "type": "team",
+      "slug": "minnesota-golden-gophers",
+      "name": "Minnesota Golden Gophers",
+      "props": {
+        "abbreviation": "MINN",
+        "city": "Minneapolis",
+        "region": "MN",
+        "leagueId": "league:ncaa",
+        "division": "Big Ten",
+        "primaryColor": "#111111",
+        "secondaryColor": "#eeeeee",
+        "coverage": "deep"
+      }
+    },
+    {
+      "id": "team:north-dakota-fighting-hawks",
+      "type": "team",
+      "slug": "north-dakota-fighting-hawks",
+      "name": "North Dakota Fighting Hawks",
+      "props": {
+        "abbreviation": "UND",
+        "city": "Grand Forks",
+        "region": "ND",
+        "leagueId": "league:ncaa",
+        "division": "NCHC",
+        "primaryColor": "#111111",
+        "secondaryColor": "#eeeeee",
+        "coverage": "deep"
+      }
+    },
+    {
+      "id": "team:quinnipiac-bobcats",
+      "type": "team",
+      "slug": "quinnipiac-bobcats",
+      "name": "Quinnipiac Bobcats",
+      "props": {
+        "abbreviation": "QU",
+        "city": "Hamden",
+        "region": "CT",
+        "leagueId": "league:ncaa",
+        "division": "ECAC",
+        "primaryColor": "#111111",
+        "secondaryColor": "#eeeeee",
+        "coverage": "deep"
+      }
+    },
+    {
+      "id": "team:wisconsin-badgers",
+      "type": "team",
+      "slug": "wisconsin-badgers",
+      "name": "Wisconsin Badgers",
+      "props": {
+        "abbreviation": "WISC",
+        "city": "Madison",
+        "region": "WI",
+        "leagueId": "league:ncaa",
+        "division": "Big Ten",
+        "primaryColor": "#111111",
+        "secondaryColor": "#eeeeee",
+        "coverage": "deep"
+      }
+    },
+    {
+      "id": "team:wisconsin-badgers-women",
+      "type": "team",
+      "slug": "wisconsin-badgers-women",
+      "name": "Wisconsin Badgers (W)",
+      "props": {
+        "abbreviation": "WISC-W",
+        "city": "Madison",
+        "region": "WI",
+        "leagueId": "league:ncaa",
+        "division": "WCHA",
+        "primaryColor": "#111111",
+        "secondaryColor": "#eeeeee",
+        "coverage": "catalog",
+        "summary": "Women's program seat on the same Team type. Catalog — no invented roster or scores."
+      }
+    },
+    {
+      "id": "team:minnesota-golden-gophers-women",
+      "type": "team",
+      "slug": "minnesota-golden-gophers-women",
+      "name": "Minnesota Golden Gophers (W)",
+      "props": {
+        "abbreviation": "MINN-W",
+        "city": "Minneapolis",
+        "region": "MN",
+        "leagueId": "league:ncaa",
+        "division": "WCHA",
+        "primaryColor": "#111111",
+        "secondaryColor": "#eeeeee",
+        "coverage": "catalog",
+        "summary": "Women's program seat on the same Team type. Catalog — no invented roster or scores."
+      }
+    },
+    {
+      "id": "team:ohio-state-buckeyes-women",
+      "type": "team",
+      "slug": "ohio-state-buckeyes-women",
+      "name": "Ohio State Buckeyes (W)",
+      "props": {
+        "abbreviation": "OSU-W",
+        "city": "Columbus",
+        "region": "OH",
+        "leagueId": "league:ncaa",
+        "division": "WCHA",
+        "primaryColor": "#111111",
+        "secondaryColor": "#eeeeee",
+        "coverage": "catalog",
+        "summary": "Women's program seat on the same Team type. Catalog — no invented roster or scores."
+      }
+    },
+    {
+      "id": "player:gavin-mckenna",
+      "type": "player",
+      "slug": "gavin-mckenna",
+      "name": "Gavin McKenna",
+      "props": {
+        "firstName": "Gavin",
+        "lastName": "McKenna",
+        "position": "LW",
+        "shootsCatches": "L",
+        "summary": "Named vault player. No invented counting stats."
+      }
+    },
+    {
+      "id": "player:sidney-crosby",
+      "type": "player",
+      "slug": "sidney-crosby",
+      "name": "Sidney Crosby",
+      "props": {
+        "firstName": "Sidney",
+        "lastName": "Crosby",
+        "position": "C",
+        "shootsCatches": "L",
+        "summary": "Named vault player. No invented counting stats."
+      }
+    },
+    {
+      "id": "player:aleksander-barkov",
+      "type": "player",
+      "slug": "aleksander-barkov",
+      "name": "Aleksander Barkov",
+      "props": {
+        "firstName": "Aleksander",
+        "lastName": "Barkov",
+        "position": "C",
+        "shootsCatches": "L",
+        "summary": "Named vault player. No invented counting stats."
+      }
+    },
+    {
+      "id": "player:brady-tkachuk",
+      "type": "player",
+      "slug": "brady-tkachuk",
+      "name": "Brady Tkachuk",
+      "props": {
+        "firstName": "Brady",
+        "lastName": "Tkachuk",
+        "position": "LW",
+        "shootsCatches": "L",
+        "summary": "Named vault player. No invented counting stats."
+      }
+    },
+    {
+      "id": "player:jacob-markstrom",
+      "type": "player",
+      "slug": "jacob-markstrom",
+      "name": "Jacob Markstrom",
+      "props": {
+        "firstName": "Jacob",
+        "lastName": "Markstrom",
+        "position": "G",
+        "shootsCatches": "L",
+        "summary": "Named vault player. No invented counting stats."
+      }
+    },
+    {
+      "id": "player:cole-eiserman",
+      "type": "player",
+      "slug": "cole-eiserman",
+      "name": "Cole Eiserman",
+      "props": {
+        "firstName": "Cole",
+        "lastName": "Eiserman",
+        "position": "LW",
+        "shootsCatches": "L",
+        "summary": "Named vault player. No invented counting stats."
+      }
+    },
+    {
+      "id": "player:chris-kreider",
+      "type": "player",
+      "slug": "chris-kreider",
+      "name": "Chris Kreider",
+      "props": {
+        "firstName": "Chris",
+        "lastName": "Kreider",
+        "position": "LW",
+        "shootsCatches": "L",
+        "summary": "Named vault player. No invented counting stats."
+      }
+    },
+    {
+      "id": "player:matthew-knies",
+      "type": "player",
+      "slug": "matthew-knies",
+      "name": "Matthew Knies",
+      "props": {
+        "firstName": "Matthew",
+        "lastName": "Knies",
+        "position": "LW",
+        "shootsCatches": "L",
+        "summary": "Named vault player. No invented counting stats."
+      }
+    },
+    {
+      "id": "player:jeremy-swayman",
+      "type": "player",
+      "slug": "jeremy-swayman",
+      "name": "Jeremy Swayman",
+      "props": {
+        "firstName": "Jeremy",
+        "lastName": "Swayman",
+        "position": "G",
+        "shootsCatches": "L",
+        "summary": "Named vault player. No invented counting stats."
+      }
+    },
+    {
+      "id": "player:jj-peterka",
+      "type": "player",
+      "slug": "jj-peterka",
+      "name": "JJ Peterka",
+      "props": {
+        "firstName": "JJ",
+        "lastName": "Peterka",
+        "position": "RW",
+        "shootsCatches": "L",
+        "summary": "Named vault player. No invented counting stats."
+      }
+    },
+    {
+      "id": "player:sergei-bobrovsky",
+      "type": "player",
+      "slug": "sergei-bobrovsky",
+      "name": "Sergei Bobrovsky",
+      "props": {
+        "firstName": "Sergei",
+        "lastName": "Bobrovsky",
+        "position": "G",
+        "shootsCatches": "L",
+        "summary": "Named vault player. No invented counting stats."
+      }
+    },
+    {
+      "id": "team:penn-state-nittany-lions",
+      "type": "team",
+      "slug": "penn-state-nittany-lions",
+      "name": "Penn State Nittany Lions",
+      "props": {
+        "abbreviation": "PSU",
+        "city": "University Park",
+        "region": "PA",
+        "leagueId": "league:ncaa",
+        "division": "Big Ten",
+        "primaryColor": "#041E42",
+        "secondaryColor": "#FFFFFF",
+        "coverage": "catalog"
+      }
+    },
+    {
+      "id": "article:pipeline-calibration-window",
+      "type": "article",
+      "slug": "pipeline-calibration-window",
+      "name": "Pipeline Calibration Window",
+      "props": {
+        "dek": "NCAA calendars and NHL rights are not the same clock.",
+        "body": "",
+        "publishedAt": "2026-09-10T15:00:00Z",
+        "author": "Hockeytown USA desk",
+        "status": "held",
+        "section": "use",
+        "heroKicker": "Held",
+        "mentions": [
+          {
+            "entityId": "player:gavin-mckenna"
+          },
+          {
+            "entityId": "player:cole-eiserman"
+          },
+          {
+            "entityId": "team:penn-state-nittany-lions"
+          }
+        ]
+      }
+    },
+    {
+      "id": "article:four-game-filter",
+      "type": "article",
+      "slug": "four-game-filter",
+      "name": "Four-Game Filter",
+      "props": {
+        "dek": "Small samples are objects, not vibes.",
+        "body": "",
+        "publishedAt": "2026-09-10T15:00:00Z",
+        "author": "Hockeytown USA desk",
+        "status": "held",
+        "section": "use",
+        "heroKicker": "Held",
+        "mentions": [
+          {
+            "entityId": "player:sidney-crosby"
+          },
+          {
+            "entityId": "team:pittsburgh-penguins"
+          }
+        ]
+      }
+    },
+    {
+      "id": "article:window-contract",
+      "type": "article",
+      "slug": "window-contract",
+      "name": "Window Contract",
+      "props": {
+        "dek": "Term and availability are separate graph facts.",
+        "body": "",
+        "publishedAt": "2026-09-10T15:00:00Z",
+        "author": "Hockeytown USA desk",
+        "status": "held",
+        "section": "use",
+        "heroKicker": "Held",
+        "mentions": [
+          {
+            "entityId": "player:aleksander-barkov"
+          },
+          {
+            "entityId": "team:florida-panthers"
+          }
+        ]
+      }
+    },
+    {
+      "id": "article:hub-restore",
+      "type": "article",
+      "slug": "hub-restore",
+      "name": "Hub Restore",
+      "props": {
+        "dek": "A bench change is an edge, not a rebrand.",
+        "body": "",
+        "publishedAt": "2026-09-10T15:00:00Z",
+        "author": "Hockeytown USA desk",
+        "status": "held",
+        "section": "use",
+        "heroKicker": "Held",
+        "mentions": [
+          {
+            "entityId": "coach:marco-sturm"
+          },
+          {
+            "entityId": "team:boston-bruins"
+          }
+        ]
+      }
+    },
+    {
+      "id": "article:interior-tax",
+      "type": "article",
+      "slug": "interior-tax",
+      "name": "Interior Tax",
+      "props": {
+        "dek": "Interior game has a price. Store it as objects.",
+        "body": "",
+        "publishedAt": "2026-09-10T15:00:00Z",
+        "author": "Hockeytown USA desk",
+        "status": "held",
+        "section": "use",
+        "heroKicker": "Held",
+        "mentions": [
+          {
+            "entityId": "player:brady-tkachuk"
+          },
+          {
+            "entityId": "player:jacob-markstrom"
+          }
+        ]
+      }
+    },
+    {
+      "id": "article:seat-auction",
+      "type": "article",
+      "slug": "seat-auction",
+      "name": "Seat Auction",
+      "props": {
+        "dek": "Roster seats clear against cap objects, not rumors.",
+        "body": "",
+        "publishedAt": "2026-09-10T15:00:00Z",
+        "author": "Hockeytown USA desk",
+        "status": "held",
+        "section": "use",
+        "heroKicker": "Held",
+        "mentions": [
+          {
+            "entityId": "player:sergei-bobrovsky"
+          },
+          {
+            "entityId": "player:aleksander-barkov"
+          },
+          {
+            "entityId": "team:florida-panthers"
+          }
+        ]
+      }
+    },
+    {
+      "id": "article:board-market-gap",
+      "type": "article",
+      "slug": "board-market-gap",
+      "name": "Board–Market Gap",
+      "props": {
+        "dek": "What a board will pay and what a market asks are two nodes.",
+        "body": "",
+        "publishedAt": "2026-09-10T15:00:00Z",
+        "author": "Hockeytown USA desk",
+        "status": "held",
+        "section": "use",
+        "heroKicker": "Held",
+        "mentions": [
+          {
+            "entityId": "player:chris-kreider"
+          },
+          {
+            "entityId": "player:matthew-knies"
+          },
+          {
+            "entityId": "team:new-york-rangers"
+          },
+          {
+            "entityId": "team:toronto-maple-leafs"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "type": "affiliate_of",
+      "from": "team:hamilton-hammers",
+      "to": "team:new-york-islanders"
+    },
+    {
+      "type": "affiliate_of",
+      "from": "team:toronto-marlies",
+      "to": "team:toronto-maple-leafs"
+    },
+    {
+      "type": "affiliate_of",
+      "from": "team:wbs-penguins",
+      "to": "team:pittsburgh-penguins"
+    },
+    {
+      "type": "affiliate_of",
+      "from": "team:providence-bruins",
+      "to": "team:boston-bruins"
+    },
+    {
+      "type": "affiliate_of",
+      "from": "team:springfield-thunderbirds",
+      "to": "team:florida-panthers"
+    },
+    {
+      "type": "affiliate_of",
+      "from": "team:syracuse-crunch",
+      "to": "team:tampa-bay-lightning"
+    },
+    {
+      "type": "played_for",
+      "from": "player:gavin-mckenna",
+      "to": "team:penn-state-nittany-lions",
+      "extra": "vault-seed"
+    },
+    {
+      "type": "played_for",
+      "from": "player:sidney-crosby",
+      "to": "team:pittsburgh-penguins",
+      "extra": "vault-seed"
+    },
+    {
+      "type": "played_for",
+      "from": "player:aleksander-barkov",
+      "to": "team:florida-panthers",
+      "extra": "vault-seed"
+    },
+    {
+      "type": "played_for",
+      "from": "player:brady-tkachuk",
+      "to": "team:ottawa-senators",
+      "extra": "vault-seed"
+    },
+    {
+      "type": "played_for",
+      "from": "player:jacob-markstrom",
+      "to": "team:new-jersey-devils",
+      "extra": "vault-seed"
+    },
+    {
+      "type": "played_for",
+      "from": "player:cole-eiserman",
+      "to": "team:boston-university-terriers",
+      "extra": "vault-seed"
+    },
+    {
+      "type": "played_for",
+      "from": "player:chris-kreider",
+      "to": "team:new-york-rangers",
+      "extra": "vault-seed"
+    },
+    {
+      "type": "played_for",
+      "from": "player:matthew-knies",
+      "to": "team:toronto-maple-leafs",
+      "extra": "vault-seed"
+    },
+    {
+      "type": "played_for",
+      "from": "player:jeremy-swayman",
+      "to": "team:boston-bruins",
+      "extra": "vault-seed"
+    },
+    {
+      "type": "played_for",
+      "from": "player:jj-peterka",
+      "to": "team:buffalo-sabres",
+      "extra": "vault-seed"
+    },
+    {
+      "type": "played_for",
+      "from": "player:sergei-bobrovsky",
+      "to": "team:florida-panthers",
+      "extra": "vault-seed"
+    },
+    {
+      "type": "committed_to",
+      "from": "player:gavin-mckenna",
+      "to": "team:penn-state-nittany-lions",
+      "extra": "vault-seed"
+    },
+    {
+      "type": "committed_to",
+      "from": "player:cole-eiserman",
+      "to": "team:boston-university-terriers",
+      "extra": "vault-seed"
+    },
+    {
+      "type": "rights_owned_by",
+      "from": "player:cole-eiserman",
+      "to": "team:new-york-islanders",
+      "extra": "vault-seed"
+    },
+    {
+      "type": "drafted_by",
+      "from": "player:cole-eiserman",
+      "to": "team:new-york-islanders",
+      "extra": "vault-seed"
+    },
+    {
+      "type": "mentioned_in",
+      "from": "player:gavin-mckenna",
+      "to": "article:pipeline-calibration-window",
+      "extra": "pipeline-calibration-window"
+    },
+    {
+      "type": "mentioned_in",
+      "from": "player:cole-eiserman",
+      "to": "article:pipeline-calibration-window",
+      "extra": "pipeline-calibration-window"
+    },
+    {
+      "type": "mentioned_in",
+      "from": "team:penn-state-nittany-lions",
+      "to": "article:pipeline-calibration-window",
+      "extra": "pipeline-calibration-window"
+    },
+    {
+      "type": "mentioned_in",
+      "from": "player:sidney-crosby",
+      "to": "article:four-game-filter",
+      "extra": "four-game-filter"
+    },
+    {
+      "type": "mentioned_in",
+      "from": "team:pittsburgh-penguins",
+      "to": "article:four-game-filter",
+      "extra": "four-game-filter"
+    },
+    {
+      "type": "mentioned_in",
+      "from": "player:aleksander-barkov",
+      "to": "article:window-contract",
+      "extra": "window-contract"
+    },
+    {
+      "type": "mentioned_in",
+      "from": "team:florida-panthers",
+      "to": "article:window-contract",
+      "extra": "window-contract"
+    },
+    {
+      "type": "mentioned_in",
+      "from": "coach:marco-sturm",
+      "to": "article:hub-restore",
+      "extra": "hub-restore"
+    },
+    {
+      "type": "mentioned_in",
+      "from": "team:boston-bruins",
+      "to": "article:hub-restore",
+      "extra": "hub-restore"
+    },
+    {
+      "type": "mentioned_in",
+      "from": "player:brady-tkachuk",
+      "to": "article:interior-tax",
+      "extra": "interior-tax"
+    },
+    {
+      "type": "mentioned_in",
+      "from": "player:jacob-markstrom",
+      "to": "article:interior-tax",
+      "extra": "interior-tax"
+    },
+    {
+      "type": "mentioned_in",
+      "from": "player:sergei-bobrovsky",
+      "to": "article:seat-auction",
+      "extra": "seat-auction"
+    },
+    {
+      "type": "mentioned_in",
+      "from": "player:aleksander-barkov",
+      "to": "article:seat-auction",
+      "extra": "seat-auction"
+    },
+    {
+      "type": "mentioned_in",
+      "from": "team:florida-panthers",
+      "to": "article:seat-auction",
+      "extra": "seat-auction"
+    },
+    {
+      "type": "mentioned_in",
+      "from": "player:chris-kreider",
+      "to": "article:board-market-gap",
+      "extra": "board-market-gap"
+    },
+    {
+      "type": "mentioned_in",
+      "from": "player:matthew-knies",
+      "to": "article:board-market-gap",
+      "extra": "board-market-gap"
+    },
+    {
+      "type": "mentioned_in",
+      "from": "team:new-york-rangers",
+      "to": "article:board-market-gap",
+      "extra": "board-market-gap"
+    },
+    {
+      "type": "mentioned_in",
+      "from": "team:toronto-maple-leafs",
+      "to": "article:board-market-gap",
+      "extra": "board-market-gap"
+    }
+  ]
+}

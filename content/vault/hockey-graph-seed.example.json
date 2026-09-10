@@ -1,0 +1,61 @@
+{
+  "export": "hockey-graph-seed",
+  "version": 1,
+  "generatedAt": "2026-09-10T00:00:00.000Z",
+  "entityCount": 3,
+  "entities": [
+    {
+      "id": "player:vault-import-example",
+      "type": "player",
+      "slug": "vault-import-example",
+      "name": "Vault Import Example",
+      "props": {
+        "firstName": "Vault",
+        "lastName": "Import Example",
+        "position": "C",
+        "shootsCatches": "L",
+        "summary": "Fixture only — not a real athlete. Shows the player export shape."
+      }
+    },
+    {
+      "id": "commitment:example-mckenna-shape",
+      "type": "commitment",
+      "slug": "example-mckenna-shape",
+      "name": "Gavin McKenna → Penn State (shape)",
+      "props": {
+        "playerId": "player:gavin-mckenna",
+        "schoolTeamId": "team:penn-state-nittany-lions",
+        "classYear": 2025,
+        "announcedOn": "2025-08-01",
+        "summary": "Example commitment shape. The live McKenna commitment is already seeded."
+      }
+    },
+    {
+      "id": "prospect:example-eiserman-shape",
+      "type": "prospect",
+      "slug": "example-eiserman-shape",
+      "name": "Cole Eiserman (shape)",
+      "props": {
+        "playerId": "player:cole-eiserman",
+        "teamId": "team:new-york-islanders",
+        "rank": 2,
+        "eta": "2026-27",
+        "leagueHint": "NCAA (BU)"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "type": "committed_to",
+      "from": "player:gavin-mckenna",
+      "to": "team:penn-state-nittany-lions",
+      "extra": "vault-example"
+    },
+    {
+      "type": "rights_owned_by",
+      "from": "player:cole-eiserman",
+      "to": "team:new-york-islanders",
+      "extra": "vault-example"
+    }
+  ]
+}
