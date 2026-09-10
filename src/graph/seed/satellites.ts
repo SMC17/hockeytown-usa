@@ -174,7 +174,18 @@ const pwhlTeams = [
 ];
 
 const ahlTeams = [
-  team({ slug: "bridgeport-islanders", name: "Bridgeport Islanders", abbreviation: "BRI", city: "Bridgeport", leagueId: AHL, primaryColor: "#00539B", secondaryColor: "#F47D30", coverage: "catalog" }),
+  team({
+    slug: "hamilton-hammers",
+    name: "Hamilton Hammers",
+    abbreviation: "HAM",
+    city: "Hamilton",
+    region: "ON",
+    leagueId: AHL,
+    primaryColor: "#00539B",
+    secondaryColor: "#F47D30",
+    coverage: "catalog",
+    summary: "New York Islanders AHL affiliate. Catalog seat — empty roster, no invented boxscores.",
+  }),
   team({ slug: "toronto-marlies", name: "Toronto Marlies", abbreviation: "TOR", city: "Toronto", leagueId: AHL, primaryColor: "#00205B", secondaryColor: "#6F8AB7", coverage: "catalog" }),
   team({ slug: "wbs-penguins", name: "Wilkes-Barre/Scranton Penguins", abbreviation: "WBS", city: "Wilkes-Barre", leagueId: AHL, primaryColor: "#111111", secondaryColor: "#FCB514", coverage: "catalog" }),
   team({ slug: "providence-bruins", name: "Providence Bruins", abbreviation: "PRO", city: "Providence", leagueId: AHL, primaryColor: "#FFB81C", secondaryColor: "#111111", coverage: "catalog" }),
@@ -250,7 +261,7 @@ export const satelliteEdges: GraphEdge[] = [
   edge("played_for", poulin.id, nodeId("team", "montreal-victoire"), { extraKey: "pwhl-2026" }),
   edge("committed_to", nodeId("player", "james-hagens"), nodeId("team", "boston-college-eagles")),
   edge("transferred_from", portalPlayer.id, nodeId("team", "western-michigan-broncos")),
-  edge("affiliate_of", nodeId("team", "bridgeport-islanders"), nodeId("team", "new-york-islanders")),
+  edge("affiliate_of", nodeId("team", "hamilton-hammers"), nodeId("team", "new-york-islanders")),
   edge("affiliate_of", nodeId("team", "toronto-marlies"), nodeId("team", "toronto-maple-leafs")),
   edge("affiliate_of", nodeId("team", "wbs-penguins"), nodeId("team", "pittsburgh-penguins")),
   edge("affiliate_of", nodeId("team", "providence-bruins"), nodeId("team", "boston-bruins")),

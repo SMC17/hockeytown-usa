@@ -8,6 +8,8 @@ const nextConfig: NextConfig = {
       { source: "/tools/transactions-terminal", destination: "/tools/transactions", permanent: false },
       { source: "/tools/line-intelligence", destination: "/tools/lines", permanent: false },
       { source: "/geography", destination: "/map", permanent: false },
+      // Signal Scout 2026-09-10: NYI AHL affiliate is Hamilton, not Bridgeport.
+      { source: "/ahl/bridgeport-islanders", destination: "/ahl/hamilton-hammers", permanent: false },
     ];
   },
 };

@@ -22,7 +22,7 @@ Deep NHL hubs: Islanders, Maple Leafs, Penguins, Bruins, Panthers, Lightning. Ea
 
 College flagship hubs: Michigan, Minnesota, Boston University, Boston College, North Dakota, Quinnipiac, Wisconsin.
 
-AHL affiliate seats: Bridgeport (NYI), Marlies (TOR), WBS (PIT), Providence (BOS), Springfield (FLA), Syracuse (TBL) at `/ahl/[slug]`.
+AHL affiliate seats: Hamilton Hammers (NYI), Marlies (TOR), WBS (PIT), Providence (BOS), Springfield (FLA), Syracuse (TBL) at `/ahl/[slug]`.
 
 Hometown texture (not Phase-1 NHL depth): Detroit Red Wings; Michigan / Michigan State / Western Michigan. Hockey Map stub: `/map`, `/geography/detroit`.
 

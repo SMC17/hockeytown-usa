@@ -451,7 +451,7 @@ export const SEO_TEAM_SECTIONS = ["lines", "injuries", "roster", "prospects"] as
 
 /** Focus-six AHL affiliates already stubbed in seed (`affiliate_of` AHL → NHL). */
 export const FOCUS_AHL_AFFILIATES = [
-  { ahl: "bridgeport-islanders", nhl: "new-york-islanders" },
+  { ahl: "hamilton-hammers", nhl: "new-york-islanders" },
   { ahl: "toronto-marlies", nhl: "toronto-maple-leafs" },
   { ahl: "wbs-penguins", nhl: "pittsburgh-penguins" },
   { ahl: "providence-bruins", nhl: "boston-bruins" },

@@ -146,6 +146,8 @@ describe("Hockey Graph foundation", () => {
   it("seeds six AHL affiliates linked from the focus six", () => {
     assert.equal(graph.ahlTeams().length, 6);
     assert.equal(FOCUS_AHL_AFFILIATES.length, 6);
+    assert.equal(graph.teamBySlug("hamilton-hammers")?.city, "Hamilton");
+    assert.equal(graph.teamBySlug("bridgeport-islanders"), undefined);
     for (const { ahl, nhl } of FOCUS_AHL_AFFILIATES) {
       const farm = graph.teamBySlug(ahl);
       const parent = graph.teamBySlug(nhl);

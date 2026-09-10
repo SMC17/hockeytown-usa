@@ -50,7 +50,7 @@ export default function DocsPage() {
           <Link href="/nhl/pittsburgh-penguins">Penguins</Link>, <Link href="/nhl/boston-bruins">Bruins</Link>,{" "}
           <Link href="/nhl/florida-panthers">Panthers</Link>,{" "}
           <Link href="/nhl/tampa-bay-lightning">Lightning</Link>. AHL seats:{" "}
-          <Link href="/ahl">/ahl</Link> (Bridgeport, Marlies, WBS, Providence, Springfield, Syracuse). Detroit is
+          <Link href="/ahl">/ahl</Link> (Hamilton Hammers, Marlies, WBS, Providence, Springfield, Syracuse). Detroit is
           hometown catalog. Details in <code>docs/FOCUS_TEAMS.md</code>.
         </p>
       </div>

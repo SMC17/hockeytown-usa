@@ -13,11 +13,11 @@ All 32 NHL clubs have a team mini-OS. Catalog clubs share the layout with empty 
 
 College flagship hubs (`/college/[slug]`): Michigan, Minnesota, Boston University, Boston College, North Dakota, Quinnipiac, Wisconsin. Denver remains a deep program shell.
 
-AHL affiliates (catalog seats at `/ahl/[slug]`, `affiliate_of` → NHL parent):
+AHL affiliates (catalog seats at `/ahl/[slug]`, `affiliate_of` → NHL parent). NYI farm is Hamilton Hammers (Signal Scout 2026-09-10; Bridgeport is stale):
 
 | AHL | NHL parent |
 | --- | --- |
-| Bridgeport Islanders | New York Islanders |
+| Hamilton Hammers | New York Islanders |
 | Toronto Marlies | Toronto Maple Leafs |
 | Wilkes-Barre/Scranton Penguins | Pittsburgh Penguins |
 | Providence Bruins | Boston Bruins |

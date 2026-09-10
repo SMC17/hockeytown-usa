@@ -19,7 +19,7 @@ import { NHL_CAP_CEILING_2026 } from "./catalog";
 import type { FocusPack } from "./focus-pack";
 
 const TEAM = nodeId("team", "new-york-islanders");
-const AFFILIATE = nodeId("team", "bridgeport-islanders");
+const AFFILIATE = nodeId("team", "hamilton-hammers");
 const DRAFT_2025 = nodeId("draft", "nhl-2025");
 
 const p = {

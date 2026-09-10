@@ -107,7 +107,7 @@ Hubs: Michigan, Minnesota, BU, BC, North Dakota, Quinnipiac, Wisconsin. Denver i
 
 | AHL | NHL parent |
 | --- | --- |
-| `/ahl/bridgeport-islanders` | NYI |
+| `/ahl/hamilton-hammers` | NYI |
 | `/ahl/toronto-marlies` | TOR |
 | `/ahl/wbs-penguins` | PIT |
 | `/ahl/providence-bruins` | BOS |
