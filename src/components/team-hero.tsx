@@ -1,20 +1,7 @@
 import Link from "next/link";
 import type { Team, TeamSection } from "@/graph/types";
 import { TEAM_SECTIONS } from "@/graph/types";
-
-const LABELS: Record<TeamSection, string> = {
-  latest: "Latest",
-  roster: "Roster",
-  lines: "Lines",
-  injuries: "Injuries",
-  contracts: "Contracts",
-  cap: "Cap",
-  prospects: "Prospects",
-  "draft-picks": "Draft picks",
-  schedule: "Schedule",
-  standings: "Standings",
-  transactions: "Transactions",
-};
+import { TEAM_SECTION_LABELS, teamSectionPath } from "@/lib/seo";
 
 export function TeamHero({ team, section }: { team: Team; section: TeamSection }) {
   return (
@@ -30,14 +17,11 @@ export function TeamHero({ team, section }: { team: Team; section: TeamSection }
         <p className="lede">{team.summary}</p>
       </section>
       <nav className="team-subnav" aria-label={`${team.name} mini-OS`}>
-        {TEAM_SECTIONS.map((s) => {
-          const href = s === "latest" ? `/nhl/${team.slug}` : `/nhl/${team.slug}/${s}`;
-          return (
-            <Link key={s} href={href} className={section === s ? "active" : undefined}>
-              {LABELS[s]}
-            </Link>
-          );
-        })}
+        {TEAM_SECTIONS.map((s) => (
+          <Link key={s} href={teamSectionPath(team.slug, s)} className={section === s ? "active" : undefined}>
+            {TEAM_SECTION_LABELS[s]}
+          </Link>
+        ))}
       </nav>
     </>
   );

@@ -82,4 +82,58 @@ describe("Hockey Graph foundation", () => {
     assert.equal(utah.abbreviation, "UTA");
     assert.equal(utah.division, "Central");
   });
+
+  it("seeds every mini-OS section on the focus six, including PP1/PK1", () => {
+    for (const team of graph.focusTeams()) {
+      for (const row of graph.focusCompleteness(team.id)) {
+        assert.ok(row.filled, `${team.slug} missing ${row.section}`);
+      }
+    }
+  });
+
+  it("aligns vault entities and five held articles without publishing them", () => {
+    for (const id of [
+      "player:gavin-mckenna",
+      "player:sidney-crosby",
+      "player:aleksander-barkov",
+      "player:brady-tkachuk",
+      "player:jacob-markstrom",
+      "player:cole-eiserman",
+      "coach:marco-sturm",
+    ]) {
+      assert.ok(graph.node(id), `missing vault entity ${id}`);
+    }
+    const held = graph.heldArticles();
+    assert.equal(held.length, 5);
+    const slugs = new Set(held.map((a) => a.slug));
+    for (const slug of [
+      "pipeline-calibration-window",
+      "four-game-filter",
+      "window-contract",
+      "hub-restore",
+      "interior-tax",
+    ]) {
+      assert.ok(slugs.has(slug), `missing held ${slug}`);
+      assert.ok(!graph.publishedArticles().some((a) => a.slug === slug));
+    }
+    const eiserman = graph.require("player:cole-eiserman");
+    assert.ok(graph.edgesFrom(eiserman.id, "rights_owned_by").some((e) => e.to === "team:new-york-islanders"));
+    assert.ok(graph.edgesFrom(eiserman.id, "committed_to").some((e) => e.to === "team:boston-university-terriers"));
+  });
+
+  it("seeds five NCAA program hubs", () => {
+    assert.equal(graph.collegeHubs().length, 5);
+    for (const slug of [
+      "michigan-wolverines",
+      "minnesota-golden-gophers",
+      "denver-pioneers",
+      "boston-university-terriers",
+      "quinnipiac-bobcats",
+    ]) {
+      const team = graph.teamBySlug(slug);
+      assert.ok(team);
+      assert.equal(team.coverage, "deep");
+      assert.ok(graph.rosterFor(team.id).length >= 3, `${slug} roster`);
+    }
+  });
 });

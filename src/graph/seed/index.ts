@@ -1,5 +1,6 @@
 import type { CapSnapshot, GraphEdge, GraphNode, HockeyGraph, LineAssignment } from "../types";
 import { leagues, nhlArenas, nhlStandings, nhlTeams, seasons } from "./catalog";
+import { collegeHubEdges, collegeHubNodes } from "./college-hubs";
 import { contentEdges, contentNodes } from "./content";
 import { flattenPack } from "./focus-pack";
 import { bruinsPack } from "./focus-bruins";
@@ -8,7 +9,9 @@ import { leafsPack } from "./focus-leafs";
 import { lightningPack } from "./focus-lightning";
 import { panthersPack } from "./focus-panthers";
 import { penguinsPack } from "./focus-penguins";
+import { heldArticleNodes } from "./held";
 import { satelliteEdges, satelliteNodes } from "./satellites";
+import { vaultEdges, vaultNodes } from "./vault";
 
 const PACKS = [islandersPack, leafsPack, penguinsPack, bruinsPack, panthersPack, lightningPack];
 
@@ -24,8 +27,25 @@ function uniqueById<T extends { id: string }>(items: T[]): T[] {
 }
 
 export function buildSeedGraph(): HockeyGraph {
-  const nodes: GraphNode[] = [...leagues, ...seasons, ...nhlArenas, ...nhlTeams, ...satelliteNodes, ...contentNodes];
-  const edges: GraphEdge[] = [...satelliteEdges, ...contentEdges];
+  const held = heldArticleNodes();
+  const nodes: GraphNode[] = [
+    ...leagues,
+    ...seasons,
+    ...nhlArenas,
+    ...nhlTeams,
+    ...satelliteNodes,
+    ...contentNodes,
+    ...vaultNodes(),
+    ...collegeHubNodes(),
+    ...held.articles,
+  ];
+  const edges: GraphEdge[] = [
+    ...satelliteEdges,
+    ...contentEdges,
+    ...vaultEdges(),
+    ...collegeHubEdges(),
+    ...held.edges,
+  ];
   const lines: LineAssignment[] = [];
   const cap: CapSnapshot[] = [];
 

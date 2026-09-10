@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { EmptyState } from "@/components/chrome";
 import { EntityChip } from "@/components/entity-chip";
+import { FocusCompleteness } from "@/components/focus-completeness";
 import { getGraph } from "@/graph/query";
 import type { Team, TeamSection } from "@/graph/types";
 import { usd, when, record } from "@/lib/format";
@@ -12,7 +13,7 @@ export function TeamSectionView({ team, section }: { team: Team; section: TeamSe
   const deep = team.coverage === "deep";
 
   if (section === "latest") {
-    const articles = g.articlesMentioning(team.id);
+    const articles = g.publicArticlesMentioning(team.id);
     const injuries = g.injuriesFor(team.id);
     const txs = g.transactionsFor(team.id);
     const standing = g.standingFor(team.id);
@@ -31,6 +32,7 @@ export function TeamSectionView({ team, section }: { team: Team; section: TeamSe
               </Link>
             ))
           )}
+          {team.focus ? <FocusCompleteness team={team} /> : null}
         </div>
         <div className="stack">
           <div className="card">

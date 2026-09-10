@@ -35,6 +35,13 @@ export default function DocsPage() {
         </p>
       </div>
       <div className="card">
+        <h2>Strategy + HELD</h2>
+        <p>
+          <Link href="/docs/strategy">/docs/strategy</Link> covers phases, rights, focus teams, and the public HELD
+          policy. Held copy rules: <Link href="/docs/held">/docs/held</Link>.
+        </p>
+      </div>
+      <div className="card">
         <h2>Focus teams</h2>
         <p>
           Deep stubs: <Link href="/nhl/new-york-islanders">Islanders</Link>,{" "}

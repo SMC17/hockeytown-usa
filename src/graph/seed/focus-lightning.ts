@@ -34,6 +34,8 @@ const p = {
   raddysh: player({ firstName: "Darren", lastName: "Raddysh", sweaterNumber: 43, position: "D", shootsCatches: "R", nationality: "CA", birthDate: "1996-02-28" }),
   vas: player({ firstName: "Andrei", lastName: "Vasilevskiy", sweaterNumber: 88, position: "G", shootsCatches: "L", nationality: "RU", birthDate: "1994-07-25", summary: "Vezina Trophy, 2025-26." }),
   geekie: player({ firstName: "Conor", lastName: "Geekie", sweaterNumber: 14, position: "C", shootsCatches: "L", nationality: "CA", birthDate: "2004-05-05" }),
+  paul: player({ firstName: "Nick", lastName: "Paul", sweaterNumber: 20, position: "LW", shootsCatches: "L", nationality: "CA", birthDate: "1995-03-20" }),
+  lilleberg: player({ firstName: "Emil", lastName: "Lilleberg", sweaterNumber: 78, position: "D", shootsCatches: "L", nationality: "NO", birthDate: "2001-02-02" }),
 };
 
 const cooper = coach({ name: "Jon Cooper", role: "head", teamId: TEAM, seasonId: SEASON_2026 });
@@ -133,9 +135,13 @@ export const lightningPack: FocusPack = {
     line(TEAM, "f1", [p.hagel.id, p.point.id, p.kucherov.id], "1F"),
     line(TEAM, "f2", [p.guentzel.id, p.cirelli.id, p.bjork.id], "2F"),
     line(TEAM, "f3", [p.geekie.id], "3F"),
+    line(TEAM, "f4", [p.paul.id], "4F"),
     line(TEAM, "d1", [p.hedman.id, p.cernak.id], "1D"),
     line(TEAM, "d2", [p.mcdonagh.id, p.raddysh.id], "2D"),
+    line(TEAM, "d3", [p.lilleberg.id], "3D"),
     line(TEAM, "g", [p.vas.id], "G"),
+    line(TEAM, "pp1", [p.kucherov.id, p.point.id, p.hagel.id, p.hedman.id, p.raddysh.id], "PP1"),
+    line(TEAM, "pk1", [p.cirelli.id, p.guentzel.id, p.mcdonagh.id, p.cernak.id], "PK1"),
   ],
   cap: {
     teamId: TEAM,

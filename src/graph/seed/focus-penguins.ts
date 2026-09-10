@@ -37,6 +37,8 @@ const p = {
   skinner: player({ firstName: "Stuart", lastName: "Skinner", sweaterNumber: 74, position: "G", shootsCatches: "L", nationality: "CA", birthDate: "1998-11-01" }),
   jarry: player({ firstName: "Tristan", lastName: "Jarry", sweaterNumber: 35, position: "G", shootsCatches: "L", nationality: "CA", birthDate: "1995-04-29" }),
   murashov: player({ firstName: "Sergei", lastName: "Murashov", sweaterNumber: 1, position: "G", shootsCatches: "R", nationality: "RU", birthDate: "2004-04-01" }),
+  hayes: player({ firstName: "Kevin", lastName: "Hayes", sweaterNumber: 13, position: "C", shootsCatches: "L", nationality: "US", birthDate: "1992-05-08" }),
+  shea: player({ firstName: "Ryan", lastName: "Shea", sweaterNumber: 5, position: "D", shootsCatches: "L", nationality: "US", birthDate: "1997-02-11" }),
 };
 
 const muse = coach({ name: "Dan Muse", role: "head", teamId: TEAM, seasonId: SEASON_2026 });
@@ -127,9 +129,13 @@ export const penguinsPack: FocusPack = {
     line(TEAM, "f1", [p.rakell.id, p.crosby.id, p.rust.id], "1F"),
     line(TEAM, "f2", [p.mantha.id, p.malkin.id, p.mcg.id], "2F"),
     line(TEAM, "f3", [p.lizotte.id, p.kindel.id], "3F"),
+    line(TEAM, "f4", [p.hayes.id], "4F"),
     line(TEAM, "d1", [p.letang.id, p.karlsson.id], "1D"),
     line(TEAM, "d2", [p.girard.id, p.graves.id], "2D"),
+    line(TEAM, "d3", [p.shea.id], "3D"),
     line(TEAM, "g", [p.skinner.id, p.jarry.id], "G"),
+    line(TEAM, "pp1", [p.crosby.id, p.malkin.id, p.rust.id, p.karlsson.id, p.letang.id], "PP1"),
+    line(TEAM, "pk1", [p.lizotte.id, p.kindel.id, p.graves.id, p.girard.id], "PK1"),
   ],
   cap: {
     teamId: TEAM,

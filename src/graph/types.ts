@@ -66,7 +66,7 @@ export type TransactionKind =
   | "buyout";
 export type InjuryStatus = "out" | "day-to-day" | "ir" | "ltir" | "returned";
 export type ShotOrVideoRights = "official" | "licensed" | "none";
-export type ArticleStatus = "draft" | "published" | "corrected";
+export type ArticleStatus = "draft" | "held" | "published" | "corrected";
 export type LineUnit =
   | "f1"
   | "f2"
@@ -161,7 +161,7 @@ export interface Roster extends NodeBase {
   type: "roster";
   teamId: string;
   seasonId: string;
-  kind: "nhl" | "ahl" | "prospect" | "training-camp";
+  kind: "nhl" | "ahl" | "ncaa" | "pwhl" | "prospect" | "training-camp";
 }
 
 export interface Contract extends NodeBase {
@@ -425,3 +425,23 @@ export const FOCUS_TEAM_SLUGS = [
 ] as const;
 
 export type FocusTeamSlug = (typeof FOCUS_TEAM_SLUGS)[number];
+
+export const COLLEGE_HUB_SLUGS = [
+  "michigan-wolverines",
+  "minnesota-golden-gophers",
+  "denver-pioneers",
+  "boston-university-terriers",
+  "quinnipiac-bobcats",
+] as const;
+
+export type CollegeHubSlug = (typeof COLLEGE_HUB_SLUGS)[number];
+
+export const COLLEGE_SECTIONS = ["latest", "roster", "commits", "pipeline"] as const;
+export type CollegeSection = (typeof COLLEGE_SECTIONS)[number];
+
+export const TOOL_SLUGS = ["transactions-terminal", "line-intelligence", "org-depth"] as const;
+export type ToolSlug = (typeof TOOL_SLUGS)[number];
+
+export const SEO_TEAM_SECTIONS = ["lines", "injuries", "roster", "prospects"] as const;
+
+export const FOCUS_LINE_UNITS = ["f1", "f2", "f3", "f4", "d1", "d2", "d3", "g", "pp1", "pk1"] as const;

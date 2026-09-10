@@ -6,11 +6,12 @@ import { when } from "@/lib/format";
 export const metadata = { title: "Newsroom" };
 
 export default function ArticlesPage() {
-  const articles = getGraph().articles();
+  const articles = getGraph().publishedArticles();
   return (
     <SiteChrome>
       <div className="kicker">Newsroom</div>
       <h1>The desk files against the graph.</h1>
+      <p className="muted">Held articles are not listed here. See the public HELD policy.</p>
       <div className="stack" style={{ marginTop: 24 }}>
         {articles.map((a) => (
           <Link key={a.id} href={`/articles/${a.slug}`} className="card">

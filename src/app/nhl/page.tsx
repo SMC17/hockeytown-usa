@@ -17,6 +17,12 @@ export default function NhlIndexPage() {
         Focus coverage is Islanders, Maple Leafs, Penguins, Bruins, Panthers, Lightning. Every other club already has the
         same hub pattern — depth fills in without a redesign.
       </p>
+      <p className="row">
+        <Link href="/nhl/lines">Lines</Link>
+        <Link href="/nhl/injuries">Injuries</Link>
+        <Link href="/nhl/roster">Rosters</Link>
+        <Link href="/nhl/prospects">Prospects</Link>
+      </p>
       {conferences.map((conf) => (
         <section key={conf} className="conference">
           <h2>{conf}</h2>

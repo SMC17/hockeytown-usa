@@ -7,7 +7,8 @@ export const metadata = { title: "Use" };
 export default function UsePage() {
   const g = getGraph();
   const stats = g.stats();
-  const articles = g.articles();
+  const published = g.publishedArticles();
+  const held = g.heldArticles();
 
   return (
     <SiteChrome mode="use">
@@ -15,7 +16,7 @@ export default function UsePage() {
       <h1>Newsroom CMS on the graph.</h1>
       <p className="lede">
         Articles are nodes. Mentions are edges. The body uses <code>[[player:matthew-schaefer]]</code> tokens that resolve
-        into entity pages. No pirated video player lives here.
+        into entity pages. Held copy is desk-only until status flips to published.
       </p>
       <div className="grid cols-4" style={{ marginTop: 24 }}>
         <div className="card">
@@ -27,18 +28,30 @@ export default function UsePage() {
           <div className="stat">{stats.edges}</div>
         </div>
         <div className="card">
-          <div className="kicker">NHL clubs</div>
-          <div className="stat">{stats.nhlTeams}</div>
-        </div>
-        <div className="card">
           <div className="kicker">Focus</div>
           <div className="stat">{stats.focusTeams}</div>
         </div>
+        <div className="card">
+          <div className="kicker">Held</div>
+          <div className="stat">{stats.heldArticles}</div>
+        </div>
       </div>
       <div className="card" style={{ marginTop: 16 }}>
-        <h2>Desk queue</h2>
+        <h2>Held queue</h2>
+        <p className="muted">Bodies render here. Public article URLs stay gated.</p>
         <div className="stack">
-          {articles.map((a) => (
+          {held.map((a) => (
+            <div key={a.id} className="row" style={{ justifyContent: "space-between" }}>
+              <Link href={`/use/held/${a.slug}`}>{a.name}</Link>
+              <span className="muted">{a.mentions.length} mentions</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="card" style={{ marginTop: 16 }}>
+        <h2>Published desk</h2>
+        <div className="stack">
+          {published.map((a) => (
             <div key={a.id} className="row" style={{ justifyContent: "space-between" }}>
               <Link href={`/articles/${a.slug}`}>{a.name}</Link>
               <span className="muted">
@@ -52,14 +65,14 @@ export default function UsePage() {
         <div className="card">
           <h3>File an article</h3>
           <p className="muted">
-            Phase 1 CMS path is in-repo TypeScript under <code>src/graph/seed/content.ts</code>. Add an{" "}
-            <code>article()</code> with mention IDs; the assembler writes <code>mentioned_in</code> edges.
+            Published copy: <code>src/graph/seed/content.ts</code>. Held MDX: <code>content/held/</code>. Mentions become{" "}
+            <code>mentioned_in</code> edges.
           </p>
         </div>
         <div className="card">
           <h3>Other front ends</h3>
           <p className="muted">
-            JSON at <Link href="/api/graph">/api/graph</Link>. Same objects, no second database.
+            JSON at <Link href="/api/graph">/api/graph</Link>. Held bodies are stripped from that payload.
           </p>
         </div>
       </div>

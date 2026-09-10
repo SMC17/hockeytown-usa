@@ -23,7 +23,7 @@ Verified on the empty `main` branch: the repo was a README stub. This foundation
 ## What exists now
 
 - Framework: Next.js App Router, TypeScript, CSS (no thrash — greenfield)
-- Routes: `/` six-mode flagship, `/nhl`, `/nhl/[team]`, team sections, `/college`, `/pwhl`, entity pages, `/articles`, `/use` CMS desk, `/api/graph`
+- Routes: `/` six-mode flagship, `/nhl` mini-OS (including `/nhl/[team]/lines|injuries|roster|prospects`), `/college/[slug]`, `/pwhl/[slug]`, `/tools`, entity pages, `/articles` (published only), `/use` CMS desk, `/docs/strategy`, JSON API
 - Data: in-memory typed graph assembled from seed modules (swap-ready for a database)
 - Content: newsroom stubs that cite graph objects
 - Deploy: `next build` / Node 20+; Vercel-compatible, no special config required

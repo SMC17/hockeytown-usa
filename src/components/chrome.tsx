@@ -31,6 +31,7 @@ export function SiteChrome({
           <Link href="/nhl">NHL</Link>
           <Link href="/college">College</Link>
           <Link href="/pwhl">PWHL</Link>
+          <Link href="/tools">Tools</Link>
           <Link href="/articles">Newsroom</Link>
         </nav>
       </header>
@@ -44,9 +45,11 @@ export function SiteChrome({
       </nav>
       {children}
       <footer className="footer">
-        <div>© {new Date().getFullYear()} Hockeytown USA · Hockey Graph phase 0–1</div>
+        <div>© {new Date().getFullYear()} Hockeytown USA · Hockey Graph</div>
         <div className="row">
           <Link href="/docs">Docs</Link>
+          <Link href="/docs/strategy">Strategy</Link>
+          <Link href="/docs/held">HELD</Link>
           <Link href="/api/graph">Graph API</Link>
         </div>
       </footer>

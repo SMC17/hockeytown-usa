@@ -36,6 +36,8 @@ const p = {
   mikkola: player({ firstName: "Niko", lastName: "Mikkola", sweaterNumber: 77, position: "D", shootsCatches: "L", nationality: "FI", birthDate: "1996-04-27" }),
   bob: player({ firstName: "Sergei", lastName: "Bobrovsky", sweaterNumber: 72, position: "G", shootsCatches: "L", nationality: "RU", birthDate: "1988-09-20" }),
   samos: player({ firstName: "Mackie", lastName: "Samoskevich", sweaterNumber: 11, position: "RW", shootsCatches: "R", nationality: "US", birthDate: "2002-11-15" }),
+  gadjovich: player({ firstName: "Jonah", lastName: "Gadjovich", sweaterNumber: 12, position: "LW", shootsCatches: "L", nationality: "CA", birthDate: "1998-10-12" }),
+  kulikov: player({ firstName: "Dmitry", lastName: "Kulikov", sweaterNumber: 7, position: "D", shootsCatches: "L", nationality: "RU", birthDate: "1990-10-29" }),
 };
 
 const maurice = coach({ name: "Paul Maurice", role: "head", teamId: TEAM, seasonId: SEASON_2026 });
@@ -134,9 +136,13 @@ export const panthersPack: FocusPack = {
     line(TEAM, "f1", [p.marchand.id, p.bennett.id, p.reinhart.id], "1F"),
     line(TEAM, "f2", [p.tkachuk.id, p.lundell.id, p.verhaeghe.id], "2F"),
     line(TEAM, "f3", [p.luostarinen.id, p.samos.id], "3F"),
+    line(TEAM, "f4", [p.gadjovich.id], "4F"),
     line(TEAM, "d1", [p.forsling.id, p.ekblad.id], "1D"),
     line(TEAM, "d2", [p.jones.id, p.mikkola.id], "2D"),
+    line(TEAM, "d3", [p.kulikov.id], "3D"),
     line(TEAM, "g", [p.bob.id], "G"),
+    line(TEAM, "pp1", [p.reinhart.id, p.bennett.id, p.verhaeghe.id, p.ekblad.id, p.forsling.id], "PP1"),
+    line(TEAM, "pk1", [p.lundell.id, p.luostarinen.id, p.mikkola.id, p.jones.id], "PK1"),
   ],
   cap: {
     teamId: TEAM,

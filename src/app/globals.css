@@ -271,7 +271,7 @@ tr:hover td { background: rgba(185, 231, 255, 0.04); }
 .muted { color: var(--muted); }
 .gold { color: var(--gold); }
 .stack { display: flex; flex-direction: column; gap: 10px; }
-.row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.row.completeness { gap: 6px; margin-top: 8px; }
 
 .conference { margin-bottom: 28px; }
 

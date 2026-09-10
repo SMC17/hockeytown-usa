@@ -3,6 +3,7 @@ import { SiteChrome } from "@/components/chrome";
 import { TeamHero } from "@/components/team-hero";
 import { TeamSectionView } from "@/components/team-section-view";
 import { getGraph, isTeamSection, TEAM_SECTIONS } from "@/graph/query";
+import { sectionTitle, TEAM_SECTION_LABELS } from "@/lib/seo";
 
 export function generateStaticParams() {
   const teams = getGraph().nhlTeams();
@@ -18,7 +19,14 @@ export async function generateMetadata({
 }) {
   const { teamSlug, section } = await params;
   const team = getGraph().teamBySlug(teamSlug);
-  return { title: team ? `${team.name} · ${section}` : "Team" };
+  if (!team || !isTeamSection(section) || section === "latest") {
+    return { title: "Team" };
+  }
+  return {
+    title: sectionTitle(team.name, section),
+    description: `${TEAM_SECTION_LABELS[section]} for the ${team.name} — Hockey Graph mini-OS.`,
+    alternates: { canonical: `/nhl/${team.slug}/${section}` },
+  };
 }
 
 export default async function TeamSectionPage({

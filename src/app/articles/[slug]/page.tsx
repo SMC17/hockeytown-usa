@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { ArticleBody } from "@/components/article-body";
 import { SiteChrome } from "@/components/chrome";
 import { EntityChip } from "@/components/entity-chip";
-import { getGraph } from "@/graph/query";
+import { getGraph, isPublicArticle } from "@/graph/query";
 import { when } from "@/lib/format";
 import type { Article } from "@/graph/types";
 
@@ -15,8 +15,15 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const article = getGraph().byTypeSlug("article", slug);
-  return { title: article?.name ?? "Article" };
+  const article = getGraph().byTypeSlug("article", slug) as Article | undefined;
+  if (!article) return { title: "Article" };
+  if (!isPublicArticle(article)) {
+    return {
+      title: article.name,
+      robots: { index: false, follow: false },
+    };
+  }
+  return { title: article.name, description: article.dek };
 }
 
 export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
@@ -24,10 +31,9 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   const article = getGraph().byTypeSlug("article", slug) as Article | undefined;
   if (!article) notFound();
   const g = getGraph();
-  const mentions = article.mentions
-    .map((m) => g.node(m.entityId))
-    .filter(Boolean);
+  const mentions = article.mentions.map((m) => g.node(m.entityId)).filter(Boolean);
   const corrections = g.edgesTo(article.id, "corrects");
+  const held = article.status === "held";
 
   return (
     <SiteChrome>
@@ -37,7 +43,18 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
       <p className="muted">
         {article.author} · {when(article.publishedAt)} · {article.status}
       </p>
-      <ArticleBody body={article.body} />
+      {held ? (
+        <div className="card">
+          <div className="kicker">Public HELD policy</div>
+          <h3>This article is held. The body is not public.</h3>
+          <p className="muted">
+            Held pieces live in the graph and on the CMS desk. They do not appear on Now, Discover, the newsroom index, or
+            the sitemap. Direct URLs show title, dek, and mentions only. Policy: <Link href="/docs/held">/docs/held</Link>.
+          </p>
+        </div>
+      ) : (
+        <ArticleBody body={article.body} />
+      )}
       <div className="card">
         <h3>Mentioned in graph</h3>
         <div className="row">

@@ -1,4 +1,4 @@
-import { entityHref } from "./ids";
+import { entityHref, nodeHref } from "./ids";
 import { getGraph } from "./query";
 import type { GraphNode, NodeType } from "./types";
 
@@ -27,7 +27,7 @@ export function parseArticleBody(body: string): ArticleBlock[] {
       kind: "mention",
       type,
       slug,
-      href: entityHref(type, slug),
+      href: node ? nodeHref(node) : entityHref(type, slug),
       label,
       missing: !node,
     });

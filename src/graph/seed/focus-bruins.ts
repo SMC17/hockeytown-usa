@@ -36,6 +36,8 @@ const p = {
   lohrei: player({ firstName: "Mason", lastName: "Lohrei", sweaterNumber: 6, position: "D", shootsCatches: "L", nationality: "US", birthDate: "2001-01-17" }),
   swayman: player({ firstName: "Jeremy", lastName: "Swayman", sweaterNumber: 1, position: "G", shootsCatches: "L", nationality: "US", birthDate: "1998-11-24" }),
   korpi: player({ firstName: "Joonas", lastName: "Korpisalo", sweaterNumber: 70, position: "G", shootsCatches: "L", nationality: "FI", birthDate: "1994-04-28" }),
+  khusnutdinov: player({ firstName: "Marat", lastName: "Khusnutdinov", sweaterNumber: 92, position: "C", shootsCatches: "L", nationality: "RU", birthDate: "2002-07-17" }),
+  peeke: player({ firstName: "Andrew", lastName: "Peeke", sweaterNumber: 26, position: "D", shootsCatches: "R", nationality: "US", birthDate: "1998-03-17" }),
 };
 
 const sturm = coach({ name: "Marco Sturm", role: "head", teamId: TEAM, seasonId: SEASON_2026 });
@@ -122,9 +124,13 @@ export const bruinsPack: FocusPack = {
     line(TEAM, "f1", [p.arvidsson.id, p.geekie.id, p.pasta.id], "1F"),
     line(TEAM, "f2", [p.zacha.id, p.elias.id, p.mittelstadt.id], "2F"),
     line(TEAM, "f3", [p.minten.id, p.hagens.id], "3F"),
+    line(TEAM, "f4", [p.khusnutdinov.id], "4F"),
     line(TEAM, "d1", [p.mcavoy.id, p.zadorov.id], "1D"),
     line(TEAM, "d2", [p.hampus.id, p.lohrei.id], "2D"),
+    line(TEAM, "d3", [p.peeke.id], "3D"),
     line(TEAM, "g", [p.swayman.id, p.korpi.id], "G"),
+    line(TEAM, "pp1", [p.pasta.id, p.geekie.id, p.zacha.id, p.mcavoy.id, p.zadorov.id], "PP1"),
+    line(TEAM, "pk1", [p.elias.id, p.minten.id, p.hampus.id, p.lohrei.id], "PK1"),
   ],
   cap: {
     teamId: TEAM,

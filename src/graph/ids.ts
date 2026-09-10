@@ -1,4 +1,4 @@
-import type { EdgeType, NodeType } from "./types";
+import type { EdgeType, GraphNode, NodeType, Team } from "./types";
 
 export function nodeId(type: NodeType, slug: string): string {
   return `${type}:${slug}`;
@@ -17,9 +17,17 @@ export function slugify(value: string): string {
     .replace(/(^-|-$)/g, "");
 }
 
-export function entityHref(type: NodeType, slug: string): string {
+export function teamHref(team: Pick<Team, "slug" | "leagueId">): string {
+  if (team.leagueId === "league:ncaa") return `/college/${team.slug}`;
+  if (team.leagueId === "league:pwhl") return `/pwhl/${team.slug}`;
+  if (team.leagueId === "league:nhl") return `/nhl/${team.slug}`;
+  return `/graph/team/${team.slug}`;
+}
+
+export function entityHref(type: NodeType, slug: string, leagueId?: string): string {
   switch (type) {
     case "team":
+      if (leagueId) return teamHref({ slug, leagueId });
       return `/nhl/${slug}`;
     case "player":
       return `/players/${slug}`;
@@ -40,4 +48,9 @@ export function entityHref(type: NodeType, slug: string): string {
     default:
       return `/graph/${type}/${slug}`;
   }
+}
+
+export function nodeHref(node: GraphNode): string {
+  if (node.type === "team") return teamHref(node);
+  return entityHref(node.type, node.slug);
 }

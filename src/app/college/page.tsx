@@ -1,30 +1,47 @@
 import Link from "next/link";
 import { SiteChrome } from "@/components/chrome";
-import { EmptyState } from "@/components/chrome";
-import { getGraph } from "@/graph/query";
+import { getGraph, isCollegeHub } from "@/graph/query";
+import { teamHref } from "@/graph/ids";
 import type { Commitment, Transfer } from "@/graph/types";
 
-export const metadata = { title: "College" };
+export const metadata = { title: "College hockey" };
 
 export default function CollegePage() {
-  const teams = getGraph()
-    .teams()
-    .filter((t) => t.leagueId === "league:ncaa");
-  const commitments = getGraph().ofType<Commitment>("commitment");
-  const transfers = getGraph().ofType<Transfer>("transfer");
+  const g = getGraph();
+  const hubs = g.collegeHubs();
+  const rest = g.collegeTeams().filter((t) => !isCollegeHub(t.slug));
+  const commitments = g.ofType<Commitment>("commitment");
+  const transfers = g.ofType<Transfer>("transfer");
 
   return (
     <SiteChrome>
-      <div className="kicker">College · stub</div>
+      <div className="kicker">College · flagship stub</div>
       <h1>The pipeline is part of the OS.</h1>
       <p className="lede">
-        Hockeytown USA&apos;s Michigan clubs sit on the same graph as NHL rights. Commitments and the transfer portal are
-        objects — not a separate product.
+        Five program hubs — Michigan, Minnesota, Denver, Boston University, Quinnipiac — share a mini-OS with Latest,
+        Roster, Commits, and Pipeline. Hometown Michigan clubs stay on the same graph. Penn State is catalog because
+        McKenna&apos;s commitment needs a seat, not a second flagship.
       </p>
-      <div className="grid cols-3" style={{ marginTop: 24 }}>
-        {teams.map((t) => (
-          <Link key={t.id} href={`/graph/team/${t.slug}`} className="card">
-            <div className="kicker">{t.abbreviation}{t.hometown ? " · hometown" : ""}</div>
+      <h2 style={{ marginTop: 28 }}>Program hubs</h2>
+      <div className="grid cols-3">
+        {hubs.map((t) => (
+          <Link key={t.id} href={teamHref(t)} className="card">
+            <div className="kicker">
+              {t.abbreviation} · hub{t.hometown ? " · hometown" : ""}
+            </div>
+            <h3>{t.name}</h3>
+            <p className="muted">{t.division} · {t.city}</p>
+          </Link>
+        ))}
+      </div>
+      <h2 style={{ marginTop: 28 }}>Catalog schools</h2>
+      <div className="grid cols-3">
+        {rest.map((t) => (
+          <Link key={t.id} href={teamHref(t)} className="card">
+            <div className="kicker">
+              {t.abbreviation}
+              {t.hometown ? " · hometown" : ""}
+            </div>
             <h3>{t.name}</h3>
             <p className="muted">{t.city}</p>
           </Link>
@@ -42,7 +59,7 @@ export default function CollegePage() {
           {transfers.map((t) => (
             <p key={t.id}>{t.name}</p>
           ))}
-          <EmptyState title="Full portal ingest later" body="This stub proves Transfer nodes exist without inventing real movement." />
+          <p className="muted">Full portal ingest is a later phase. Transfer nodes exist without inventing movement.</p>
         </div>
       </div>
     </SiteChrome>

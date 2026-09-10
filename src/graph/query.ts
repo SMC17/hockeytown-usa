@@ -3,6 +3,7 @@ import type {
   Article,
   CapSnapshot,
   Coach,
+  Commitment,
   Contract,
   DraftPick,
   EdgeType,
@@ -20,9 +21,19 @@ import type {
   TeamSection,
   Transaction,
 } from "./types";
-import { FOCUS_TEAM_SLUGS, TEAM_SECTIONS } from "./types";
+import {
+  COLLEGE_HUB_SLUGS,
+  FOCUS_LINE_UNITS,
+  FOCUS_TEAM_SLUGS,
+  TEAM_SECTIONS,
+  TOOL_SLUGS,
+} from "./types";
 
 let cached: GraphIndex | null = null;
+
+export function isPublicArticle(article: Article): boolean {
+  return article.status === "published" || article.status === "corrected";
+}
 
 export class GraphIndex {
   readonly raw: HockeyGraph;
@@ -83,6 +94,22 @@ export class GraphIndex {
       .sort((a, b) => a.name.localeCompare(b.name));
   }
 
+  collegeTeams(): Team[] {
+    return this.teams()
+      .filter((t) => t.leagueId === "league:ncaa")
+      .sort((a, b) => a.name.localeCompare(b.name));
+  }
+
+  collegeHubs(): Team[] {
+    return this.collegeTeams().filter((t) => (COLLEGE_HUB_SLUGS as readonly string[]).includes(t.slug));
+  }
+
+  pwhlTeams(): Team[] {
+    return this.teams()
+      .filter((t) => t.leagueId === "league:pwhl")
+      .sort((a, b) => a.name.localeCompare(b.name));
+  }
+
   focusTeams(): Team[] {
     return this.nhlTeams().filter((t) => t.focus);
   }
@@ -100,7 +127,15 @@ export class GraphIndex {
   }
 
   publishedArticles(): Article[] {
-    return this.articles().filter((a) => a.status === "published" || a.status === "corrected");
+    return this.articles().filter(isPublicArticle);
+  }
+
+  heldArticles(): Article[] {
+    return this.articles().filter((a) => a.status === "held");
+  }
+
+  publicNodes(): GraphNode[] {
+    return this.raw.nodes.filter((n) => n.type !== "article" || isPublicArticle(n as Article));
   }
 
   edgesFrom(id: string, type?: EdgeType): GraphEdge[] {
@@ -150,6 +185,10 @@ export class GraphIndex {
     return this.ofType<Injury>("injury").filter((i) => i.teamId === teamId);
   }
 
+  allInjuries(): Injury[] {
+    return this.ofType<Injury>("injury");
+  }
+
   transactionsFor(teamId: string): Transaction[] {
     return this.ofType<Transaction>("transaction").filter(
       (t) => t.toTeamId === teamId || t.fromTeamId === teamId,
@@ -158,6 +197,10 @@ export class GraphIndex {
 
   prospectsFor(teamId: string): Prospect[] {
     return this.ofType<Prospect>("prospect").filter((p) => p.teamId === teamId);
+  }
+
+  allProspects(): Prospect[] {
+    return this.ofType<Prospect>("prospect");
   }
 
   picksFor(teamId: string): DraftPick[] {
@@ -194,10 +237,53 @@ export class GraphIndex {
       .filter((n): n is Article => n?.type === "article");
   }
 
+  publicArticlesMentioning(entityId: string): Article[] {
+    return this.articlesMentioning(entityId).filter(isPublicArticle);
+  }
+
+  commitmentsFor(teamId: string): Commitment[] {
+    return this.ofType<Commitment>("commitment").filter((c) => c.schoolTeamId === teamId);
+  }
+
+  sectionFilled(teamId: string, section: TeamSection): boolean {
+    switch (section) {
+      case "latest":
+        return this.publicArticlesMentioning(teamId).length > 0;
+      case "roster":
+        return this.rosterFor(teamId).length > 0;
+      case "lines": {
+        const units = new Set(this.linesFor(teamId).map((l) => l.unit));
+        return FOCUS_LINE_UNITS.every((u) => units.has(u));
+      }
+      case "injuries":
+        return this.injuriesFor(teamId).length > 0;
+      case "contracts":
+        return this.contractsFor(teamId).length > 0;
+      case "cap":
+        return Boolean(this.capFor(teamId));
+      case "prospects":
+        return this.prospectsFor(teamId).length > 0;
+      case "draft-picks":
+        return this.picksFor(teamId).length > 0;
+      case "schedule":
+        return this.gamesFor(teamId).length > 0;
+      case "standings":
+        return Boolean(this.standingFor(teamId));
+      case "transactions":
+        return this.transactionsFor(teamId).length > 0;
+      default:
+        return false;
+    }
+  }
+
+  focusCompleteness(teamId: string): { section: TeamSection; filled: boolean }[] {
+    return TEAM_SECTIONS.map((section) => ({ section, filled: this.sectionFilled(teamId, section) }));
+  }
+
   search(q: string, limit = 24): GraphNode[] {
     const needle = q.trim().toLowerCase();
     if (!needle) return [];
-    const scored = this.raw.nodes
+    const scored = this.publicNodes()
       .map((n) => {
         const hay = `${n.name} ${n.slug} ${n.summary ?? ""}`.toLowerCase();
         let score = 0;
@@ -223,6 +309,8 @@ export class GraphIndex {
       edges: this.raw.edges.length,
       nhlTeams: this.nhlTeams().length,
       focusTeams: this.focusTeams().length,
+      collegeHubs: this.collegeHubs().length,
+      heldArticles: this.heldArticles().length,
       counts,
       edgeCounts,
     };
@@ -238,8 +326,16 @@ export function isFocusTeam(slug: string): boolean {
   return (FOCUS_TEAM_SLUGS as readonly string[]).includes(slug);
 }
 
+export function isCollegeHub(slug: string): boolean {
+  return (COLLEGE_HUB_SLUGS as readonly string[]).includes(slug);
+}
+
 export function isTeamSection(value: string): value is TeamSection {
   return (TEAM_SECTIONS as readonly string[]).includes(value);
 }
 
-export { FOCUS_TEAM_SLUGS, TEAM_SECTIONS };
+export function isToolSlug(value: string): boolean {
+  return (TOOL_SLUGS as readonly string[]).includes(value);
+}
+
+export { COLLEGE_HUB_SLUGS, FOCUS_LINE_UNITS, FOCUS_TEAM_SLUGS, TEAM_SECTIONS, TOOL_SLUGS };

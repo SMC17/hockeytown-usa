@@ -159,6 +159,8 @@ export const islandersPack: FocusPack = {
     line(TEAM, "d2", [p.pelech.id, p.deangelo.id], "2D"),
     line(TEAM, "d3", [p.romanov.id, p.mayfield.id], "3D"),
     line(TEAM, "g", [p.sorokin.id, p.rittich.id], "G"),
+    line(TEAM, "pp1", [p.horvat.id, p.barzal.id, p.lee.id, p.schaefer.id, p.pulock.id], "PP1"),
+    line(TEAM, "pk1", [p.pageau.id, p.cizikas.id, p.pelech.id, p.mayfield.id], "PK1"),
   ],
   cap: {
     teamId: TEAM,

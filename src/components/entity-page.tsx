@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { ArticleBody } from "@/components/article-body";
 import { SiteChrome } from "@/components/chrome";
 import { EntityChip } from "@/components/entity-chip";
-import { entityHref } from "@/graph/ids";
+import { nodeHref } from "@/graph/ids";
 import { getGraph } from "@/graph/query";
 import type { Article, GraphNode, NodeType } from "@/graph/types";
 import { NODE_TYPES } from "@/graph/types";
@@ -13,14 +13,18 @@ export function EntityPage({ type, slug }: { type: NodeType; slug: string }) {
   const node = g.byTypeSlug(type, slug);
   if (!node) notFound();
   const neighbors = g.neighbors(node.id);
-  const articles = g.articlesMentioning(node.id);
+  const articles = g.publicArticlesMentioning(node.id);
 
   return (
     <SiteChrome>
       <div className="kicker">{node.type}</div>
       <h1>{node.name}</h1>
       {node.summary ? <p className="lede">{node.summary}</p> : null}
-      {node.type === "article" ? <ArticleBody body={(node as Article).body} /> : null}
+          {node.type === "article" && (node as Article).status === "held" ? (
+            <p className="muted">Held article — body is desk-only. See the public gate at the article URL.</p>
+          ) : node.type === "article" ? (
+            <ArticleBody body={(node as Article).body} />
+          ) : null}
       <div className="grid cols-2" style={{ marginTop: 24 }}>
         <div className="card">
           <h2>Edges</h2>
@@ -50,9 +54,9 @@ export function EntityPage({ type, slug }: { type: NodeType; slug: string }) {
               </p>
             ))
           )}
-          {node.type === "team" && node.leagueId === "league:nhl" ? (
+          {node.type === "team" ? (
             <p>
-              <Link href={entityHref("team", node.slug)}>Open team mini-OS</Link>
+              <Link href={nodeHref(node)}>Open hub</Link>
             </p>
           ) : null}
         </div>

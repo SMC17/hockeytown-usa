@@ -1,10 +1,10 @@
 import Link from "next/link";
 import type { GraphNode } from "@/graph/types";
-import { entityHref } from "@/graph/ids";
+import { entityHref, nodeHref } from "@/graph/ids";
 
 export function EntityChip({ node }: { node: GraphNode }) {
   return (
-    <Link className="chip" href={entityHref(node.type, node.slug)}>
+    <Link className="chip" href={nodeHref(node)}>
       {node.name}
     </Link>
   );

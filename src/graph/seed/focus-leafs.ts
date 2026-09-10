@@ -135,6 +135,8 @@ export const leafsPack: FocusPack = {
     line(TEAM, "d2", [p.tanev.id, p.carlo.id], "2D"),
     line(TEAM, "d3", [p.oel.id], "3D"),
     line(TEAM, "g", [p.stolarz.id, p.woll.id], "G"),
+    line(TEAM, "pp1", [p.knies.id, p.matthews.id, p.nylander.id, p.rielly.id, p.mccabe.id], "PP1"),
+    line(TEAM, "pk1", [p.tavares.id, p.laughton.id, p.tanev.id, p.carlo.id], "PK1"),
   ],
   cap: {
     teamId: TEAM,
