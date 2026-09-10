@@ -1,6 +1,6 @@
 # Vault sync — `hockey-graph-seed`
 
-The private vault export is a **106-entity** graph dump. This repo does not invent those entities. It documents the JSON shape and ships a loader stub that merges a file if you drop it.
+`content/vault/hockey-graph-seed.json` is a real ingest file (32 NHL clubs, focus-six AHL including Hamilton Hammers for NYI, NCAA beachheads, women’s Wisc/Minn/OSU, named players, seven held frameworks). The loader merges **new** IDs. In-repo TypeScript still owns focus-six rosters and lines. No invented boxscores.
 
 ## Drop path
 

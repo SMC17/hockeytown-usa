@@ -33,6 +33,7 @@ export function SiteChrome({
           <Link href="/pwhl">PWHL</Link>
           <Link href="/ahl">AHL</Link>
           <Link href="/map">Map</Link>
+          <Link href="/watch">Watch</Link>
           <Link href="/tools">Tools</Link>
           <Link href="/articles">Newsroom</Link>
         </nav>
@@ -53,6 +54,10 @@ export function SiteChrome({
           <Link href="/docs/strategy">Strategy</Link>
           <Link href="/docs/held">HELD</Link>
           <Link href="/docs/vault-sync">Vault sync</Link>
+          <Link href="/docs/frameworks">Frameworks</Link>
+          <Link href="/docs/credentials">Credentials</Link>
+          <Link href="/watch">Watch</Link>
+          <Link href="/alerts">Alerts</Link>
           <Link href="/my-hockey">My Hockey</Link>
           <Link href="/api/graph">Graph API</Link>
         </div>

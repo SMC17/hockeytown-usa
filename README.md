@@ -30,7 +30,7 @@ JSON for other front ends: [http://localhost:3000/api/graph](http://localhost:30
 
 **Live (public):** published or corrected articles; 32 NHL mini-OS shells (six focus clubs fully seeded, including PP1/PK1); seven college program hubs; eight PWHL clubs; six AHL affiliate seats; tools empty states; Hockey Map stub; My Hockey chips; docs.
 
-**Held (not published):** five vault-aligned articles as graph nodes with entity IDs — Pipeline Calibration Window, Four-Game Filter, Window Contract, Hub Restore, Interior Tax.
+**Held (not published):** seven vault-aligned articles as graph nodes with entity IDs — Pipeline Calibration Window, Four-Game Filter, Window Contract, Hub Restore, Interior Tax, Seat Auction, Board–Market Gap.
 
 | Surface | Held behavior |
 | --- | --- |
@@ -122,6 +122,8 @@ Linked from each focus club Latest and from `/tools/org-depth`.
 | --- | --- |
 | `/map` | Hockey Map |
 | `/geography/detroit` | Hometown geography stub |
+| `/watch` | Watch Guides (editorial; no pirated streams) |
+| `/alerts` | Alerts stub (My Hockey follows) |
 | `/tools` | Tool index |
 | `/tools/transactions` | Transaction terminal (empty interactive) |
 | `/tools/lines` | Line Intelligence |
@@ -131,7 +133,10 @@ Linked from each focus club Latest and from `/tools/org-depth`.
 | `/docs` | Docs index |
 | `/docs/strategy` | Phases, rights, focus, HELD |
 | `/docs/held` | Public held policy |
-| `/docs/vault-sync` | Import `hockey-graph-seed` (106 entities) |
+| `/docs/vault-sync` | Wired `hockey-graph-seed.json` ingest |
+| `/docs/credentials` | Media credential posture |
+| `/docs/frameworks` | Internal held frameworks (held badge) |
+| `/newsroom` | Alias of `/docs/frameworks` |
 
 ### Newsroom, entities, desk, API
 
@@ -153,7 +158,7 @@ Linked from each focus club Latest and from `/tools/org-depth`.
 
 ## Vault import
 
-Documented dump size: **106 entities**. Drop `content/vault/hockey-graph-seed.json`. Missing file is a no-op. Shape: `content/vault/hockey-graph-seed.example.json`. Details: [docs/VAULT_SYNC.md](docs/VAULT_SYNC.md) · [/docs/vault-sync](/docs/vault-sync).
+Committed ingest: `content/vault/hockey-graph-seed.json` (32 NHL, focus-six AHL with **Hamilton Hammers** for NYI, NCAA beachheads + women’s Wisc/Minn/OSU, named players, seven held frameworks with empty JSON bodies). Loader merges new IDs when the file is present. Shape fixture: `content/vault/hockey-graph-seed.example.json`. Details: [docs/VAULT_SYNC.md](docs/VAULT_SYNC.md) · [/docs/vault-sync](/docs/vault-sync).
 
 ## Docs (in-repo)
 

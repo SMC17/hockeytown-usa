@@ -29,7 +29,7 @@ import type {
   Transfer,
   Video,
 } from "./types";
-import { EDGE_TYPES, NODE_TYPES, VAULT_SEED_ENTITY_COUNT } from "./types";
+import { EDGE_TYPES, NODE_TYPES } from "./types";
 
 export const VAULT_SEED_EXPORT = "hockey-graph-seed";
 export const VAULT_SEED_FILENAME = "hockey-graph-seed.json";
@@ -537,10 +537,8 @@ export function vaultExportToGraph(envelope: VaultExportEnvelope): VaultImportRe
       `entityCount ${envelope.entityCount} does not match entities.length ${envelope.entities.length}`,
     );
   }
-  if (envelope.entityCount !== VAULT_SEED_ENTITY_COUNT) {
-    warnings.push(
-      `documented vault dump is ${VAULT_SEED_ENTITY_COUNT} entities; this file declares ${envelope.entityCount}`,
-    );
+  if (envelope.entityCount < 32) {
+    warnings.push(`vault seed looks thin (${envelope.entityCount} entities); expected a full NHL set`);
   }
 
   const nodes: GraphNode[] = [];

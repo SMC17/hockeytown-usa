@@ -38,8 +38,10 @@ export default function DocsPage() {
         <h2>Strategy + HELD</h2>
         <p>
           <Link href="/docs/strategy">/docs/strategy</Link> covers phases, rights, focus teams, and the public HELD
-          policy. Held copy rules: <Link href="/docs/held">/docs/held</Link>. Import the 106-entity vault dump:{" "}
-          <Link href="/docs/vault-sync">/docs/vault-sync</Link>.
+          policy. Held copy rules: <Link href="/docs/held">/docs/held</Link>. Frameworks desk:{" "}
+          <Link href="/docs/frameworks">/docs/frameworks</Link>. Vault seed:{" "}
+          <Link href="/docs/vault-sync">/docs/vault-sync</Link>. Credentials:{" "}
+          <Link href="/docs/credentials">/docs/credentials</Link>.
         </p>
       </div>
       <div className="card">

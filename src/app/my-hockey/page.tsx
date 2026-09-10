@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { SiteChrome } from "@/components/chrome";
 import { FollowChips } from "@/components/follow-chips";
 import { getGraph } from "@/graph/query";
@@ -35,7 +36,8 @@ export default function MyHockeyPage() {
       <h1>Follow objects, not channels.</h1>
       <p className="lede">
         Click a chip to follow a Team node. This is a personalization shell — local to this browser — on the same graph as
-        the Islanders mini-OS and the PWHL clubs. No live game video lives here.
+        the Islanders mini-OS and the PWHL clubs. Alerts for these IDs: <Link href="/alerts">/alerts</Link>. No live game
+        video lives here.
       </p>
       <FollowChips
         groups={[

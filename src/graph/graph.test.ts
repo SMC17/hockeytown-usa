@@ -1,10 +1,11 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { EDGE_TYPES, FOCUS_AHL_AFFILIATES, NODE_TYPES, VAULT_SEED_ENTITY_COUNT } from "./types";
+import { EDGE_TYPES, FOCUS_AHL_AFFILIATES, NODE_TYPES } from "./types";
 import { buildSeedGraph } from "./seed";
 import { GraphIndex } from "./query";
 import { parseArticleBody } from "./render";
 import { teamHref } from "./ids";
+import { HELD_FRAMEWORKS } from "./seed/vault-payload";
 import { loadVaultSeedFile, parseVaultExport, vaultExportToGraph, vaultSeedPath } from "./vault-import";
 import { readFileSync } from "node:fs";
 
@@ -94,7 +95,7 @@ describe("Hockey Graph foundation", () => {
     }
   });
 
-  it("aligns vault entities and five held articles without publishing them", () => {
+  it("aligns vault entities and seven held articles without publishing them", () => {
     for (const id of [
       "player:gavin-mckenna",
       "player:sidney-crosby",
@@ -102,22 +103,23 @@ describe("Hockey Graph foundation", () => {
       "player:brady-tkachuk",
       "player:jacob-markstrom",
       "player:cole-eiserman",
+      "player:chris-kreider",
+      "player:matthew-knies",
+      "player:jeremy-swayman",
+      "player:jj-peterka",
+      "player:sergei-bobrovsky",
       "coach:marco-sturm",
     ]) {
       assert.ok(graph.node(id), `missing vault entity ${id}`);
     }
     const held = graph.heldArticles();
-    assert.equal(held.length, 5);
+    assert.equal(held.length, HELD_FRAMEWORKS.length);
     const slugs = new Set(held.map((a) => a.slug));
-    for (const slug of [
-      "pipeline-calibration-window",
-      "four-game-filter",
-      "window-contract",
-      "hub-restore",
-      "interior-tax",
-    ]) {
+    for (const { slug } of HELD_FRAMEWORKS) {
       assert.ok(slugs.has(slug), `missing held ${slug}`);
       assert.ok(!graph.publishedArticles().some((a) => a.slug === slug));
+      const article = graph.byTypeSlug("article", slug);
+      assert.equal(article && "status" in article ? article.status : "", "held");
     }
     const eiserman = graph.require("player:cole-eiserman");
     assert.ok(graph.edgesFrom(eiserman.id, "rights_owned_by").some((e) => e.to === "team:new-york-islanders"));
@@ -163,11 +165,24 @@ describe("Hockey Graph foundation", () => {
     }
   });
 
-  it("parses the vault-export example without inventing a 106-entity dump", () => {
-    assert.equal(VAULT_SEED_ENTITY_COUNT, 106);
-    const missing = loadVaultSeedFile();
-    assert.equal(missing.nodes.length, 0);
-    assert.ok(missing.warnings.some((w) => w.includes("hockey-graph-seed.json")));
+  it("ingests the committed hockey-graph-seed.json without inventing boxscores", () => {
+    const live = loadVaultSeedFile();
+    assert.ok(live.nodes.length >= 32, `seed too small: ${live.nodes.length}`);
+    assert.ok(live.nodes.some((n) => n.id === "team:hamilton-hammers"));
+    assert.ok(!live.nodes.some((n) => n.id === "team:bridgeport-islanders"));
+    assert.ok(live.nodes.some((n) => n.id === "player:chris-kreider"));
+    assert.ok(live.nodes.some((n) => n.id === "team:ohio-state-buckeyes-women"));
+    for (const n of live.nodes) {
+      if (n.type === "game") {
+        assert.equal(n.status, "scheduled");
+        assert.equal(n.homeScore, undefined);
+        assert.equal(n.awayScore, undefined);
+      }
+      if (n.type === "article") {
+        assert.equal(n.status, "held");
+        assert.equal(n.body, "");
+      }
+    }
 
     const raw = JSON.parse(readFileSync(vaultSeedPath("hockey-graph-seed.example.json"), "utf8"));
     const envelope = parseVaultExport(raw);
@@ -176,7 +191,7 @@ describe("Hockey Graph foundation", () => {
     const graphish = vaultExportToGraph(envelope);
     assert.equal(graphish.nodes.length, 3);
     assert.ok(graphish.nodes.some((n) => n.id === "player:vault-import-example"));
-    assert.ok(graphish.warnings.some((w) => w.includes("106")));
+    assert.ok(graphish.warnings.some((w) => w.includes("thin") || w.includes("3")));
 
     const liveStripped = vaultExportToGraph(
       parseVaultExport({

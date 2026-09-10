@@ -9,8 +9,8 @@ export default function HeldPolicyPage() {
       <div className="kicker">Docs · HELD</div>
       <h1>Held is a status, not a folder.</h1>
       <p className="lede">
-        Five vault-aligned articles exist in the graph with <code>status: held</code>. They are linked to entity IDs.
-        They are not on the public newsroom.
+        Seven vault-aligned frameworks exist in the graph with <code>status: held</code>. They are linked to entity IDs.
+        They are not on the public newsroom. Desk list: <Link href="/docs/frameworks">/docs/frameworks</Link>.
       </p>
       <div className="card" style={{ marginTop: 24 }}>
         <h2>Public</h2>
@@ -36,10 +36,12 @@ export default function HeldPolicyPage() {
           <li>Window Contract</li>
           <li>Hub Restore</li>
           <li>Interior Tax</li>
+          <li>Seat Auction</li>
+          <li>Board–Market Gap</li>
         </ol>
         <p className="muted">
-          Original conceptual shells aligned to McKenna, Crosby, Barkov, Brady Tkachuk, Markstrom, Eiserman, Sturm. Entity
-          JSON is a different path: <Link href="/docs/vault-sync">/docs/vault-sync</Link>.
+          Original conceptual shells. Public consumers stay gated. Entity JSON:{" "}
+          <Link href="/docs/vault-sync">/docs/vault-sync</Link>.
         </p>
       </div>
     </SiteChrome>

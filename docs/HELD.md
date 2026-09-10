@@ -32,5 +32,7 @@ Held is a first-class `ArticleStatus`. It is not a draft folder and not a publis
 3. Window Contract — Barkov term / LTIR
 4. Hub Restore — Sturm Bruins after Marchand
 5. Interior Tax — Brady Tkachuk, Barkov, Markstrom
+6. Seat Auction — Barkov / Bobrovsky seats, no invented boxscores
+7. Board–Market Gap — Kreider vs Knies clocks
 
-These are original conceptual shells aligned to those entities. They are not a dump of a private vault. Entity JSON import is a separate path: [VAULT_SYNC.md](./VAULT_SYNC.md).
+These are original conceptual shells aligned to those entities. They are not a dump of a private vault. Public consumers stay gated. Internal list: `/docs/frameworks` (`/newsroom`). Entity JSON import: [VAULT_SYNC.md](./VAULT_SYNC.md).

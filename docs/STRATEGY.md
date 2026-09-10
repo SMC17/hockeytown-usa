@@ -30,7 +30,7 @@ Details: [FOCUS_TEAMS.md](./FOCUS_TEAMS.md).
 
 ## Public HELD policy
 
-Five vault-aligned articles exist as graph nodes with `status: held`. They are **not published**.
+Seven vault-aligned articles exist as graph nodes with `status: held`. They are **not published**.
 
 Public surfaces must not render held bodies:
 
@@ -40,4 +40,4 @@ Public surfaces must not render held bodies:
 
 Direct `/articles/[slug]` shows title, dek, mentions, and a gate — no body. Desk body: `/use/held/[slug]`. `noindex` on held URLs.
 
-Full policy: [HELD.md](./HELD.md). Vault JSON import (106 entities, loader stub): [VAULT_SYNC.md](./VAULT_SYNC.md).
+Full policy: [HELD.md](./HELD.md). Frameworks desk: `/docs/frameworks`. Vault JSON: [VAULT_SYNC.md](./VAULT_SYNC.md).

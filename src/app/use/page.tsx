@@ -38,7 +38,10 @@ export default function UsePage() {
       </div>
       <div className="card" style={{ marginTop: 16 }}>
         <h2>Held queue</h2>
-        <p className="muted">Bodies render here. Public article URLs stay gated.</p>
+        <p className="muted">
+          Bodies render here. Public article URLs stay gated. Frameworks index:{" "}
+          <Link href="/docs/frameworks">/docs/frameworks</Link>.
+        </p>
         <div className="stack">
           {held.map((a) => (
             <div key={a.id} className="row" style={{ justifyContent: "space-between" }}>

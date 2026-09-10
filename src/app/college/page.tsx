@@ -9,7 +9,8 @@ export const metadata = { title: "College hockey" };
 export default function CollegePage() {
   const g = getGraph();
   const hubs = g.collegeHubs();
-  const rest = g.collegeTeams().filter((t) => !isCollegeHub(t.slug));
+  const rest = g.collegeTeams().filter((t) => !isCollegeHub(t.slug) && !t.slug.endsWith("-women"));
+  const women = g.collegeTeams().filter((t) => t.slug.endsWith("-women"));
   const commitments = g.ofType<Commitment>("commitment");
   const transfers = g.ofType<Transfer>("transfer");
 
@@ -47,6 +48,21 @@ export default function CollegePage() {
           </Link>
         ))}
       </div>
+      {women.length > 0 ? (
+        <>
+          <h2 style={{ marginTop: 28 }}>Women&apos;s programs</h2>
+          <p className="muted">Same Team type. Catalog seats — Wisconsin, Minnesota, Ohio State. No invented rosters.</p>
+          <div className="grid cols-3">
+            {women.map((t) => (
+              <Link key={t.id} href={teamHref(t)} className="card">
+                <div className="kicker">{t.abbreviation} · W</div>
+                <h3>{t.name}</h3>
+                <p className="muted">{t.division} · {t.city}</p>
+              </Link>
+            ))}
+          </div>
+        </>
+      ) : null}
       <div className="grid cols-2" style={{ marginTop: 16 }}>
         <div className="card">
           <h2>Commitments</h2>
