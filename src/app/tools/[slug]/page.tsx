@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { EmptyState, SiteChrome } from "@/components/chrome";
+import { LinesTerminal, type LineRow } from "@/app/tools/lines-terminal";
+import { TransactionsTerminal, type TxRow } from "@/app/tools/transactions-terminal";
 import { canonicalToolSlug } from "@/graph/query";
 import { getGraph } from "@/graph/query";
-import type { Transaction } from "@/graph/types";
+import type { Player, Transaction } from "@/graph/types";
 import { TOOL_ALIAS_SLUGS, TOOL_SLUGS, type ToolSlug } from "@/graph/types";
 import { teamHref } from "@/graph/ids";
 
@@ -46,49 +48,57 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
 
   return (
     <SiteChrome>
-      <div className="kicker">Tools · stub · {canonical}</div>
+      <div className="kicker">Tools · {canonical === "org-depth" ? "stub" : "MVP shell"} · {canonical}</div>
       <h1>{copy.name}</h1>
       <p className="lede">{copy.dek}</p>
       <p className="muted">{copy.types}</p>
       <p className="muted">
-        Empty interactive is intentional. Queries will bind to the same IDs. Read <Link href="/docs/strategy">strategy</Link>{" "}
-        and <Link href="/docs/held">HELD</Link>.
+        Filters read seed objects only — no live wire, no invented moves.{" "}
+        <Link href="/docs/strategy">strategy</Link> · <Link href="/docs/held">HELD</Link>.
       </p>
       {canonical === "transactions" ? (
         txs.length === 0 ? (
           <EmptyState
             title="No Transaction nodes in this slice"
-            body="When ingest lands, this terminal lists Transaction objects (trade, signing, waiver, recall). Seed focus clubs already carry a few stubs below if present."
+            body="When ingest lands, this terminal lists Transaction objects (trade, signing, waiver, recall)."
           />
         ) : (
-          <div className="stack" style={{ marginTop: 24 }}>
-            {txs.map((t) => (
-              <div key={t.id} className="card">
-                <div className="kicker">{t.kind} · {t.date} · type: transaction</div>
-                <h3>{t.name}</h3>
-                <p className="muted">{t.notes ?? "Transaction node. Player IDs hang on this object."}</p>
-              </div>
-            ))}
-            <EmptyState
-              title="Controls later"
-              body="No filters, no live feed, no video. This URL exists so operators can point at Transaction."
-            />
-          </div>
+          <TransactionsTerminal
+            rows={txs.map((t): TxRow => {
+              const teamId = t.toTeamId ?? t.fromTeamId;
+              const team = teamId ? g.node(teamId) : undefined;
+              return {
+                id: t.id,
+                slug: t.slug,
+                name: t.name,
+                kind: t.kind,
+                date: t.date,
+                notes: t.notes,
+                teamSlug: team && team.type === "team" ? team.slug : undefined,
+                teamName: team && team.type === "team" ? team.name : undefined,
+              };
+            })}
+          />
         )
       ) : null}
       {canonical === "lines" ? (
-        <div className="stack" style={{ marginTop: 24 }}>
-          {focus.map((t) => (
-            <Link key={t.id} href={`${teamHref(t)}/lines`} className="card">
-              <div className="kicker">{t.abbreviation} · {g.linesFor(t.id).length} LineAssignment units</div>
-              <h3>{t.name} lines</h3>
-            </Link>
-          ))}
-          <EmptyState
-            title="No drawing board yet"
-            body="Line Intelligence will query LineAssignment (f1–f4, d1–d3, g, pp1, pk1). It will not scrape broadcast graphics."
-          />
-        </div>
+        <LinesTerminal
+          rows={g.raw.lines.map((line): LineRow => {
+            const team = g.require(line.teamId);
+            return {
+              id: line.id,
+              teamSlug: team.slug,
+              teamName: team.name,
+              teamAbbr: team.type === "team" ? team.abbreviation : team.slug,
+              unit: line.unit,
+              label: line.label,
+              players: line.playerIds
+                .map((id) => g.node(id))
+                .filter((n): n is Player => n?.type === "player")
+                .map((p) => ({ slug: p.slug, name: p.name })),
+            };
+          })}
+        />
       ) : null}
       {canonical === "org-depth" ? (
         <div className="stack" style={{ marginTop: 24 }}>

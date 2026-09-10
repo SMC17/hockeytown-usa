@@ -18,6 +18,13 @@ export default function NowPage() {
         Hockeytown USA is the company. Hockey Graph is the knowledge layer. This flagship is one front end —
         national OS first, hometown texture included.
       </p>
+      <nav className="link-row" aria-label="Flagship surfaces">
+        <Link href="/watch">Watch</Link>
+        <Link href="/alerts">Alerts</Link>
+        <Link href="/fantasy">Fantasy</Link>
+        <Link href="/tools">Tools</Link>
+        <Link href="/articles">Newsroom</Link>
+      </nav>
       <div className="grid cols-2" style={{ marginTop: 28 }}>
         <div className="stack">
           {articles.map((a) => (

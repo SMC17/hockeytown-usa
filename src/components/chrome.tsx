@@ -58,6 +58,7 @@ export function SiteChrome({
           <Link href="/docs/credentials">Credentials</Link>
           <Link href="/watch">Watch</Link>
           <Link href="/alerts">Alerts</Link>
+          <Link href="/fantasy">Fantasy</Link>
           <Link href="/my-hockey">My Hockey</Link>
           <Link href="/api/graph">Graph API</Link>
         </div>

@@ -34,6 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/docs/credentials",
     "/watch",
     "/alerts",
+    "/fantasy",
     "/injuries",
     "/roster",
     "/prospects",

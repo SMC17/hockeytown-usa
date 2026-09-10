@@ -124,9 +124,10 @@ Linked from each focus club Latest and from `/tools/org-depth`.
 | `/geography/detroit` | Hometown geography stub |
 | `/watch` | Watch Guides (editorial; no pirated streams) |
 | `/alerts` | Alerts stub (My Hockey follows) |
+| `/fantasy` | Fantasy process (Board–Market Gap + SoS literacy; no gambling tips) |
 | `/tools` | Tool index |
-| `/tools/transactions` | Transaction terminal (empty interactive) |
-| `/tools/lines` | Line Intelligence |
+| `/tools/transactions` | Transaction terminal (seed filters) |
+| `/tools/lines` | Line Intelligence (seed filters) |
 | `/tools/org-depth` | Prospects + AHL affiliates + college rights |
 | `/tools/transactions-terminal` | Redirect → `/tools/transactions` |
 | `/tools/line-intelligence` | Redirect → `/tools/lines` |
