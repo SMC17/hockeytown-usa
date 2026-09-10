@@ -67,7 +67,7 @@ export const articles = [
   article({
     slug: "schaefer-rewired-the-island",
     name: "Schaefer rewired the Island",
-    dek: "A 18-year-old No. 1 pick did not wait his turn. The Islanders' blue line is now a graph with him at the center.",
+    dek: "An 18-year-old No. 1 pick did not wait his turn. The Islanders' blue line is now a graph with him at the center.",
     heroKicker: "Now · Islanders",
     section: "now",
     author: "Hockeytown USA desk",
