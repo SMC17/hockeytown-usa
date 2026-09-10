@@ -449,4 +449,17 @@ export const TOOL_ALIAS_SLUGS = ["transactions-terminal", "line-intelligence"] a
 
 export const SEO_TEAM_SECTIONS = ["lines", "injuries", "roster", "prospects"] as const;
 
+/** Focus-six AHL affiliates already stubbed in seed (`affiliate_of` AHL → NHL). */
+export const FOCUS_AHL_AFFILIATES = [
+  { ahl: "bridgeport-islanders", nhl: "new-york-islanders" },
+  { ahl: "toronto-marlies", nhl: "toronto-maple-leafs" },
+  { ahl: "wbs-penguins", nhl: "pittsburgh-penguins" },
+  { ahl: "providence-bruins", nhl: "boston-bruins" },
+  { ahl: "springfield-thunderbirds", nhl: "florida-panthers" },
+  { ahl: "syracuse-crunch", nhl: "tampa-bay-lightning" },
+] as const;
+
+/** Documented size of a full `hockey-graph-seed` vault export. The loader does not invent these. */
+export const VAULT_SEED_ENTITY_COUNT = 106;
+
 export const FOCUS_LINE_UNITS = ["f1", "f2", "f3", "f4", "d1", "d2", "d3", "g", "pp1", "pk1"] as const;

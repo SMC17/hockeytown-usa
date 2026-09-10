@@ -37,7 +37,10 @@ export default function HeldPolicyPage() {
           <li>Hub Restore</li>
           <li>Interior Tax</li>
         </ol>
-        <p className="muted">Original conceptual shells aligned to McKenna, Crosby, Barkov, Brady Tkachuk, Markstrom, Eiserman, Sturm.</p>
+        <p className="muted">
+          Original conceptual shells aligned to McKenna, Crosby, Barkov, Brady Tkachuk, Markstrom, Eiserman, Sturm. Entity
+          JSON is a different path: <Link href="/docs/vault-sync">/docs/vault-sync</Link>.
+        </p>
       </div>
     </SiteChrome>
   );

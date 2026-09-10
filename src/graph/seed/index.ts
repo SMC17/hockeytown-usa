@@ -12,6 +12,7 @@ import { penguinsPack } from "./focus-penguins";
 import { heldArticleNodes } from "./held";
 import { satelliteEdges, satelliteNodes } from "./satellites";
 import { vaultEdges, vaultNodes } from "./vault";
+import { loadVaultSeedImport } from "../vault-import";
 
 const PACKS = [islandersPack, leafsPack, penguinsPack, bruinsPack, panthersPack, lightningPack];
 
@@ -56,6 +57,10 @@ export function buildSeedGraph(): HockeyGraph {
     lines.push(...pack.lines);
     cap.push(pack.cap);
   }
+
+  const imported = loadVaultSeedImport();
+  nodes.push(...imported.nodes);
+  edges.push(...imported.edges);
 
   return {
     generatedAt: new Date().toISOString(),

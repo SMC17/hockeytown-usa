@@ -103,10 +103,38 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
               <h3>College hubs</h3>
               <p className="muted">{g.collegeHubs().length} flagship programs</p>
             </Link>
+            <Link href="/ahl" className="card">
+              <div className="kicker">type: team · affiliate_of</div>
+              <h3>AHL affiliates</h3>
+              <p className="muted">{g.ahlTeams().length} development clubs</p>
+            </Link>
           </div>
+          {focus.map((t) => {
+            const affiliates = g.affiliatesFor(t.id);
+            const prospects = g.prospectsFor(t.id);
+            return (
+              <div key={t.id} className="card">
+                <div className="kicker">{t.abbreviation} · org</div>
+                <h3>
+                  <Link href={teamHref(t)}>{t.name}</Link>
+                </h3>
+                {affiliates.length === 0 ? (
+                  <p className="muted">No AHL affiliate edge yet.</p>
+                ) : (
+                  affiliates.map((a) => (
+                    <p key={a.id}>
+                      AHL: <Link href={teamHref(a)}>{a.name}</Link>
+                      <span className="muted"> · {a.city}</span>
+                    </p>
+                  ))
+                )}
+                <p className="muted">{prospects.length} Prospect objects · no invented AHL boxscores</p>
+              </div>
+            );
+          })}
           <EmptyState
             title="Depth chart later"
-            body="Org Depth walks Prospect, DraftPick, Commitment, and rights_owned_by. Empty interactive is the honest Phase-1 state."
+            body="Org Depth walks Prospect, DraftPick, Commitment, rights_owned_by, and affiliate_of. Empty interactive is the honest Phase-1 state."
           />
         </div>
       ) : null}

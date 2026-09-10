@@ -33,4 +33,4 @@ Held is a first-class `ArticleStatus`. It is not a draft folder and not a publis
 4. Hub Restore — Sturm Bruins after Marchand
 5. Interior Tax — Brady Tkachuk, Barkov, Markstrom
 
-These are original conceptual shells aligned to those entities. They are not a dump of a private vault.
+These are original conceptual shells aligned to those entities. They are not a dump of a private vault. Entity JSON import is a separate path: [VAULT_SYNC.md](./VAULT_SYNC.md).

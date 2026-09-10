@@ -24,11 +24,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/nhl/prospects",
     "/college",
     "/pwhl",
+    "/ahl",
     "/articles",
     "/tools",
     "/docs",
     "/docs/strategy",
     "/docs/held",
+    "/docs/vault-sync",
     "/injuries",
     "/roster",
     "/prospects",
@@ -51,6 +53,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const team of g.pwhlTeams()) {
     paths.push(teamHref(team));
     paths.push(`${teamHref(team)}/roster`);
+  }
+  for (const team of g.ahlTeams()) {
+    paths.push(teamHref(team));
   }
   for (const slug of TOOL_SLUGS) paths.push(`/tools/${slug}`);
   for (const article of g.publishedArticles()) paths.push(`/articles/${article.slug}`);

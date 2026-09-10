@@ -112,6 +112,27 @@ export class GraphIndex {
       .sort((a, b) => a.name.localeCompare(b.name));
   }
 
+  ahlTeams(): Team[] {
+    return this.teams()
+      .filter((t) => t.leagueId === "league:ahl")
+      .sort((a, b) => a.name.localeCompare(b.name));
+  }
+
+  /** AHL clubs with `affiliate_of` pointing at this NHL parent. */
+  affiliatesFor(nhlTeamId: string): Team[] {
+    return this.edgesTo(nhlTeamId, "affiliate_of")
+      .map((e) => this.byId.get(e.from))
+      .filter((n): n is Team => n?.type === "team");
+  }
+
+  /** NHL parent for an AHL club (`affiliate_of` from AHL → NHL). */
+  nhlParentFor(ahlTeamId: string): Team | undefined {
+    const edge = this.edgesFrom(ahlTeamId, "affiliate_of")[0];
+    if (!edge) return undefined;
+    const node = this.byId.get(edge.to);
+    return node?.type === "team" ? node : undefined;
+  }
+
   focusTeams(): Team[] {
     return this.nhlTeams().filter((t) => t.focus);
   }
@@ -312,6 +333,7 @@ export class GraphIndex {
       nhlTeams: this.nhlTeams().length,
       focusTeams: this.focusTeams().length,
       collegeHubs: this.collegeHubs().length,
+      ahlTeams: this.ahlTeams().length,
       heldArticles: this.heldArticles().length,
       counts,
       edgeCounts,

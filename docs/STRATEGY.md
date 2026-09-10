@@ -10,7 +10,7 @@ Phase 0–1 is this foundation. Later phases extend the same objects; they do no
 
 | Now | Next (not this PR) |
 | --- | --- |
-| Schema, seed graph, six-mode flagship, focus-six mini-OS, college/PWHL hubs, tools stubs, HELD policy | Live ingest, real cap math, licensed video playback, auth identity, interactive tools beyond stubs |
+| Schema, seed graph, six-mode flagship, focus-six mini-OS, college/PWHL/AHL hubs, tools stubs, HELD policy, vault-sync loader | Live ingest, real cap math, licensed video playback, auth identity, interactive tools beyond stubs, real 106-entity vault drop |
 
 ## Rights
 
@@ -21,6 +21,8 @@ No pirated highlights. `Video.rights` is `official` | `licensed` | `none`. `none
 Deep NHL hubs: Islanders, Maple Leafs, Penguins, Bruins, Panthers, Lightning. Each has every mini-OS section seeded (Latest through Transactions), including PP1/PK1.
 
 College flagship hubs: Michigan, Minnesota, Boston University, Boston College, North Dakota, Quinnipiac, Wisconsin.
+
+AHL affiliate seats: Bridgeport (NYI), Marlies (TOR), WBS (PIT), Providence (BOS), Springfield (FLA), Syracuse (TBL) at `/ahl/[slug]`.
 
 Hometown texture (not Phase-1 NHL depth): Detroit Red Wings; Michigan / Michigan State / Western Michigan. Hockey Map stub: `/map`, `/geography/detroit`.
 
@@ -38,4 +40,4 @@ Public surfaces must not render held bodies:
 
 Direct `/articles/[slug]` shows title, dek, mentions, and a gate — no body. Desk body: `/use/held/[slug]`. `noindex` on held URLs.
 
-Full policy: [HELD.md](./HELD.md).
+Full policy: [HELD.md](./HELD.md). Vault JSON import (106 entities, loader stub): [VAULT_SYNC.md](./VAULT_SYNC.md).

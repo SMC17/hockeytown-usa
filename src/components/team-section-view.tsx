@@ -5,7 +5,7 @@ import { FocusCompleteness } from "@/components/focus-completeness";
 import { getGraph } from "@/graph/query";
 import type { Team, TeamSection } from "@/graph/types";
 import { usd, when, record } from "@/lib/format";
-import { entityHref } from "@/graph/ids";
+import { entityHref, teamHref } from "@/graph/ids";
 
 export function TeamSectionView({ team, section }: { team: Team; section: TeamSection }) {
   const g = getGraph();
@@ -17,6 +17,7 @@ export function TeamSectionView({ team, section }: { team: Team; section: TeamSe
     const injuries = g.injuriesFor(team.id);
     const txs = g.transactionsFor(team.id);
     const standing = g.standingFor(team.id);
+    const affiliates = g.affiliatesFor(team.id);
     return (
       <div className="grid cols-2">
         <div className="stack">
@@ -63,6 +64,20 @@ export function TeamSectionView({ team, section }: { team: Team; section: TeamSe
               </ul>
             )}
           </div>
+          {affiliates.length > 0 ? (
+            <div className="card">
+              <h3>AHL affiliate</h3>
+              {affiliates.map((a) => (
+                <p key={a.id}>
+                  <Link href={teamHref(a)}>{a.name}</Link>
+                  <span className="muted"> · {a.city}</span>
+                </p>
+              ))}
+              <p className="muted">
+                <Link href="/ahl">All focus-six affiliates</Link> · <Link href="/tools/org-depth">Org Depth</Link>
+              </p>
+            </div>
+          ) : null}
           <div className="card">
             <h3>Transactions</h3>
             {txs.length === 0 ? (

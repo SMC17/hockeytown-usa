@@ -5,7 +5,7 @@ export type FollowTarget = {
   name: string;
   abbreviation: string;
   href: string;
-  group: "nhl" | "college" | "pwhl";
+  group: "nhl" | "college" | "pwhl" | "ahl";
   hint?: string;
 };
 

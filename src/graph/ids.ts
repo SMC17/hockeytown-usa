@@ -21,6 +21,7 @@ export function teamHref(team: Pick<Team, "slug" | "leagueId">): string {
   if (team.leagueId === "league:ncaa") return `/college/${team.slug}`;
   if (team.leagueId === "league:pwhl") return `/pwhl/${team.slug}`;
   if (team.leagueId === "league:nhl") return `/nhl/${team.slug}`;
+  if (team.leagueId === "league:ahl") return `/ahl/${team.slug}`;
   return `/graph/team/${team.slug}`;
 }
 

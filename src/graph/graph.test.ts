@@ -1,9 +1,12 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { EDGE_TYPES, NODE_TYPES } from "./types";
+import { EDGE_TYPES, FOCUS_AHL_AFFILIATES, NODE_TYPES, VAULT_SEED_ENTITY_COUNT } from "./types";
 import { buildSeedGraph } from "./seed";
 import { GraphIndex } from "./query";
 import { parseArticleBody } from "./render";
+import { teamHref } from "./ids";
+import { loadVaultSeedFile, parseVaultExport, vaultExportToGraph, vaultSeedPath } from "./vault-import";
+import { readFileSync } from "node:fs";
 
 describe("Hockey Graph foundation", () => {
   const graph = new GraphIndex(buildSeedGraph());
@@ -137,6 +140,75 @@ describe("Hockey Graph foundation", () => {
       assert.equal(team.coverage, "deep");
       assert.ok(graph.rosterFor(team.id).length >= 5, `${slug} roster`);
       assert.ok(graph.commitmentsFor(team.id).length >= 1, `${slug} commits`);
+    }
+  });
+
+  it("seeds six AHL affiliates linked from the focus six", () => {
+    assert.equal(graph.ahlTeams().length, 6);
+    assert.equal(FOCUS_AHL_AFFILIATES.length, 6);
+    for (const { ahl, nhl } of FOCUS_AHL_AFFILIATES) {
+      const farm = graph.teamBySlug(ahl);
+      const parent = graph.teamBySlug(nhl);
+      assert.ok(farm && parent, `${ahl} / ${nhl}`);
+      assert.equal(farm.leagueId, "league:ahl");
+      assert.equal(teamHref(farm), `/ahl/${ahl}`);
+      const affiliates = graph.affiliatesFor(parent.id);
+      assert.ok(
+        affiliates.some((t) => t.slug === ahl),
+        `${nhl} missing affiliate ${ahl}`,
+      );
+      assert.equal(graph.nhlParentFor(farm.id)?.slug, nhl);
+    }
+  });
+
+  it("parses the vault-export example without inventing a 106-entity dump", () => {
+    assert.equal(VAULT_SEED_ENTITY_COUNT, 106);
+    const missing = loadVaultSeedFile();
+    assert.equal(missing.nodes.length, 0);
+    assert.ok(missing.warnings.some((w) => w.includes("hockey-graph-seed.json")));
+
+    const raw = JSON.parse(readFileSync(vaultSeedPath("hockey-graph-seed.example.json"), "utf8"));
+    const envelope = parseVaultExport(raw);
+    assert.equal(envelope.export, "hockey-graph-seed");
+    assert.equal(envelope.entities.length, 3);
+    const graphish = vaultExportToGraph(envelope);
+    assert.equal(graphish.nodes.length, 3);
+    assert.ok(graphish.nodes.some((n) => n.id === "player:vault-import-example"));
+    assert.ok(graphish.warnings.some((w) => w.includes("106")));
+
+    const liveStripped = vaultExportToGraph(
+      parseVaultExport({
+        export: "hockey-graph-seed",
+        version: 1,
+        generatedAt: "2026-09-10T00:00:00.000Z",
+        entityCount: 1,
+        entities: [
+          {
+            id: "game:example-shell",
+            type: "game",
+            slug: "example-shell",
+            name: "Example shell",
+            props: {
+              seasonId: "season:nhl-2025-26",
+              leagueId: "league:nhl",
+              homeTeamId: "team:new-york-islanders",
+              awayTeamId: "team:boston-bruins",
+              startsAt: "2026-10-10T00:00:00Z",
+              status: "live",
+              homeScore: 4,
+              awayScore: 3,
+            },
+          },
+        ],
+        edges: [],
+      }),
+    );
+    const game = liveStripped.nodes[0];
+    assert.equal(game?.type, "game");
+    if (game?.type === "game") {
+      assert.equal(game.status, "scheduled");
+      assert.equal(game.homeScore, undefined);
+      assert.equal(game.awayScore, undefined);
     }
   });
 });

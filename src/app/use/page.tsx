@@ -72,7 +72,8 @@ export default function UsePage() {
         <div className="card">
           <h3>Other front ends</h3>
           <p className="muted">
-            JSON at <Link href="/api/graph">/api/graph</Link>. Held bodies are stripped from that payload.
+            JSON at <Link href="/api/graph">/api/graph</Link>. Held bodies are stripped from that payload. Vault drop:{" "}
+            <Link href="/docs/vault-sync">/docs/vault-sync</Link>.
           </p>
         </div>
       </div>

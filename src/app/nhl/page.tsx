@@ -22,6 +22,8 @@ export default function NhlIndexPage() {
         <Link href="/nhl/injuries">Injuries</Link>
         <Link href="/nhl/roster">Rosters</Link>
         <Link href="/nhl/prospects">Prospects</Link>
+        <Link href="/ahl">AHL affiliates</Link>
+        <Link href="/tools/org-depth">Org Depth</Link>
       </p>
       {conferences.map((conf) => (
         <section key={conf} className="conference">

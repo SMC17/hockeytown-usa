@@ -18,9 +18,20 @@ export function ProgramHero({
   section: string;
   leagueLabel: string;
 }) {
-  const base = team.leagueId === "league:ncaa" ? "/college" : team.leagueId === "league:pwhl" ? "/pwhl" : "/nhl";
+  const base =
+    team.leagueId === "league:ncaa"
+      ? "/college"
+      : team.leagueId === "league:pwhl"
+        ? "/pwhl"
+        : team.leagueId === "league:ahl"
+          ? "/ahl"
+          : "/nhl";
   const sections =
-    team.leagueId === "league:ncaa" ? COLLEGE_SECTIONS : (["latest", "roster"] as const);
+    team.leagueId === "league:ncaa"
+      ? COLLEGE_SECTIONS
+      : team.leagueId === "league:ahl"
+        ? (["latest"] as const)
+        : (["latest", "roster"] as const);
 
   return (
     <>

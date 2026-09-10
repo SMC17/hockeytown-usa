@@ -59,7 +59,8 @@ export default function StrategyPage() {
           the body. Desk body lives at <code>/use/held/[slug]</code>.
         </p>
         <p>
-          <Link href="/docs/held">Read the HELD policy</Link>.
+          <Link href="/docs/held">Read the HELD policy</Link>. Vault JSON import:{" "}
+          <Link href="/docs/vault-sync">/docs/vault-sync</Link>.
         </p>
       </div>
     </SiteChrome>

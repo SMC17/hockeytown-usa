@@ -27,6 +27,7 @@ export default function MyHockeyPage() {
   ];
   const college = g.collegeHubs().map((t) => toTarget(t, "college"));
   const pwhl = g.pwhlTeams().map((t) => toTarget(t, "pwhl"));
+  const ahl = g.ahlTeams().map((t) => toTarget(t, "ahl"));
 
   return (
     <SiteChrome mode="follow">
@@ -41,6 +42,7 @@ export default function MyHockeyPage() {
           { label: "NHL focus + Hockeytown", items: nhl },
           { label: "College hubs", items: college },
           { label: "PWHL", items: pwhl },
+          { label: "AHL affiliates", items: ahl },
         ]}
       />
     </SiteChrome>

@@ -38,7 +38,8 @@ export default function DocsPage() {
         <h2>Strategy + HELD</h2>
         <p>
           <Link href="/docs/strategy">/docs/strategy</Link> covers phases, rights, focus teams, and the public HELD
-          policy. Held copy rules: <Link href="/docs/held">/docs/held</Link>.
+          policy. Held copy rules: <Link href="/docs/held">/docs/held</Link>. Import the 106-entity vault dump:{" "}
+          <Link href="/docs/vault-sync">/docs/vault-sync</Link>.
         </p>
       </div>
       <div className="card">
@@ -48,8 +49,9 @@ export default function DocsPage() {
           <Link href="/nhl/toronto-maple-leafs">Maple Leafs</Link>,{" "}
           <Link href="/nhl/pittsburgh-penguins">Penguins</Link>, <Link href="/nhl/boston-bruins">Bruins</Link>,{" "}
           <Link href="/nhl/florida-panthers">Panthers</Link>,{" "}
-          <Link href="/nhl/tampa-bay-lightning">Lightning</Link>. Detroit is hometown catalog. Details in{" "}
-          <code>docs/FOCUS_TEAMS.md</code>.
+          <Link href="/nhl/tampa-bay-lightning">Lightning</Link>. AHL seats:{" "}
+          <Link href="/ahl">/ahl</Link> (Bridgeport, Marlies, WBS, Providence, Springfield, Syracuse). Detroit is
+          hometown catalog. Details in <code>docs/FOCUS_TEAMS.md</code>.
         </p>
       </div>
     </SiteChrome>
